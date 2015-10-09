@@ -16,5 +16,17 @@ namespace Yathzee
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Die[] dice = new Die[5];
+            DiceGenerator generator = new DiceGenerator();
+            dice = generator.generateDice();
+            for (int i = 0; i < dice.Length; i++)
+            {
+                Console.WriteLine(dice[i].getDieValue());
+                Console.WriteLine(dice[i].getDieImage());
+            }
+        }
     }
 }
