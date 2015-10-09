@@ -1,1 +1,10 @@
 c:\users\gdioguardi\documents\visual studio 2013\Projects\Yathzee\Yathzee\bin\Debug\Yathzee.exe.config
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\bin\Debug\Yathzee.exe.config
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\obj\Debug\Yathzee.csprojResolveAssemblyReference.cache
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\obj\Debug\Yathzee.Form1.resources
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\obj\Debug\Yathzee.Properties.Resources.resources
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\obj\Debug\Yathzee.csproj.GenerateResource.Cache
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\bin\Debug\Yathzee.exe
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\bin\Debug\Yathzee.pdb
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\obj\Debug\Yathzee.exe
+C:\Users\gdioguardi\Documents\Yathzee\src\Yathzee\obj\Debug\Yathzee.pdb
