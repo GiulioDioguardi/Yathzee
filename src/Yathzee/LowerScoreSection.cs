@@ -47,24 +47,47 @@ namespace Yathzee
                     scoreValues[scoreType] = checkForThreeOfKind(diceValues);
                     threeOfKindIsSet = true;
                     break;
+                case "FourOfKind":
+                    scoreValues[scoreType] = checkForFourOfKind(diceValues);
+                    fourOfKindIsSet = true;
+                    break;
                 default:
                     break;
             }
             return scoreValues;
         }
 
+        private int sumValues(int[] values)
+        {
+            int sum = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                sum += values[i];
+            }
+            return sum;
+        }
         private int checkForThreeOfKind(int[] diceValues)
         {
             if ( (diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2]) ||
                  (diceValues[1] == diceValues[2] && diceValues[1] == diceValues[3]) ||
                  (diceValues[2] == diceValues[3] && diceValues[2] == diceValues[4])  )
             {
-                int sum = 0;
-                for (int i = 0; i < diceValues.Length; i++)
-                {
-                    sum += diceValues[i];
-                }
-                return sum;
+                return sumValues(diceValues);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private int checkForFourOfKind(int[] diceValues)
+        {
+            if ( (diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
+                  diceValues[0] == diceValues[3]) ||
+                 (diceValues[1] == diceValues[2] && diceValues[1] == diceValues[3] &&
+                  diceValues[1] == diceValues[4]))
+            {
+                return sumValues(diceValues);
             }
             else
             {

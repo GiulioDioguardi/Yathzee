@@ -159,9 +159,36 @@ namespace YathzeeUnitTest
             threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
             Assert.AreEqual(9, threeOfKind["ThreeOfKind"]);
 
-             dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
+            dice = new Die[5] { new Die(4), new Die(2), new Die(1), new Die(2), new Die(2) };
+            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
+            Assert.AreEqual(11, threeOfKind["ThreeOfKind"]);
+
+            dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(6), new Die(2) };
+            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
+            Assert.AreEqual(25, threeOfKind["ThreeOfKind"]);
+
+            dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
             threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
             Assert.AreEqual(0, threeOfKind["ThreeOfKind"]);
+        }
+
+    [TestMethod]
+        public void FourOfKindTest()
+        {
+            LowerScoreSection lowerSection = new LowerScoreSection();
+            Dictionary<string, int> fourOfKind = new Dictionary<string, int>();
+
+            Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(1), new Die(4) };
+            fourOfKind = lowerSection.checkScore(dice, "FourOfKind");
+            Assert.AreEqual(8, fourOfKind["FourOfKind"]);
+
+            dice = new Die[5] { new Die(3), new Die(4), new Die(4), new Die(4), new Die(4) };
+            fourOfKind = lowerSection.checkScore(dice, "FourOfKind");
+            Assert.AreEqual(19, fourOfKind["FourOfKind"]);
+
+            dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
+            fourOfKind = lowerSection.checkScore(dice, "FourOfKind");
+            Assert.AreEqual(0, fourOfKind["FourOfKind"]);
         }
     }
 }
