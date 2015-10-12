@@ -9,10 +9,10 @@ namespace Yathzee
 {
     public class DiceGenerator
     {
+        Random rnd = new Random();
         public Die generateDice()
-        {
-            Random rnd = new Random();
-            int value = rnd.Next(1, 6);
+        {    
+            int value = rnd.Next(6) + 1;
             Die die = new Die(value);
             return die;
         }
