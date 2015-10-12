@@ -69,9 +69,8 @@ namespace Yathzee
         }
 
         [TestMethod]
-        public void TotalTest()
+        public void TotalTestUpper()
         {
-
             UpperScoreSection upperSection = new UpperScoreSection();
             Dictionary<ScoreTypeUpper, int> scoreValues = new Dictionary<ScoreTypeUpper, int>();
             Die[] dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(2), new Die(4) };
@@ -268,6 +267,26 @@ namespace Yathzee
             Die[] dice = new Die[5] { new Die(2), new Die(2), new Die(2), new Die(2), new Die(2) };
             yathzee = lowerSection.checkScore(dice, ScoreTypeLower.Yathzee);
             Assert.AreEqual(50, yathzee[ScoreTypeLower.Yathzee]);
+
+            dice = new Die[5] { new Die(2), new Die(3), new Die(2), new Die(2), new Die(2) };
+            yathzee = lowerSection.checkScore(dice, ScoreTypeLower.Yathzee);
+            Assert.AreEqual(0, yathzee[ScoreTypeLower.Yathzee]);
         }
+
+        [TestMethod]
+        public void TotalTestLower()
+        {
+            LowerScoreSection lowerSection = new LowerScoreSection();
+            Dictionary<ScoreTypeLower, int> scoreValues = new Dictionary<ScoreTypeLower, int>();
+            Die[] dice = new Die[5] { new Die(6), new Die(3), new Die(6), new Die(2), new Die(4) };
+
+            scoreValues = lowerSection.checkScore(dice, ScoreTypeLower.Chance);
+            Assert.AreEqual(21, scoreValues[ScoreTypeLower.Total]);
+
+            dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(6), new Die(4) };
+            scoreValues = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            Assert.AreEqual(49, scoreValues[ScoreTypeLower.Total]);
+        }
+
     }
 }

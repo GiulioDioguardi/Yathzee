@@ -10,9 +10,15 @@ using System.Windows.Forms;
 
 namespace Yathzee
 {
-    public enum ScoreTypeUpper { One, Two, Three, Four, Five, Six, Bonus, Total };
-    public enum ScoreTypeLower { ThreeOfKind, FourOfKind, FullHouse, SmallStraight, LargeStraight,
-                          Yathzee, Chance, Total };
+    public enum ScoreTypeUpper 
+    { 
+        One, Two, Three, Four, Five, Six, Bonus, Total 
+    };
+    public enum ScoreTypeLower
+    {
+        ThreeOfKind, FourOfKind, FullHouse, SmallStraight, LargeStraight,
+        Yathzee, Chance, Total
+    };
     public partial class Form1 : Form
     {
         public Form1()
@@ -28,7 +34,7 @@ namespace Yathzee
             {
                 dice[i] = generator.generateDice();
             }
-            
+
             for (int i = 0; i < dice.Length; i++)
             {
                 Console.WriteLine(dice[i].getDieValue());

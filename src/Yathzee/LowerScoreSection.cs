@@ -67,9 +67,16 @@ namespace Yathzee
                     scoreValues[scoreType] = checkForYathzee(diceValues);
                     yathzeeIsSet = true;
                     break;
+                case ScoreTypeLower.Chance:
+                    scoreValues[scoreType] = checkForChance(diceValues);
+                    chanceIsSet = true;
+                    break;
                 default:
                     break;
             }
+
+            setTotal(sumTotal());
+            scoreValues[ScoreTypeLower.Total] = getTotal();
             return scoreValues;
         }
 
@@ -132,7 +139,7 @@ namespace Yathzee
             if ((diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[2] - 1 &&
                 diceValues[2] == diceValues[3] - 1) ||
                 (diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[2] - 1 &&
-                diceValues[2] ==  diceValues[4] - 1) ||
+                diceValues[2] == diceValues[4] - 1) ||
                 (diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[3] - 1 &&
                 diceValues[3] == diceValues[4] - 1) ||
                 (diceValues[0] == diceValues[2] - 1 && diceValues[2] == diceValues[3] - 1 &&
@@ -151,7 +158,7 @@ namespace Yathzee
         private int checkForLargeStraight(int[] diceValues)
         {
             if ((diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[2] - 1 &&
-                diceValues[2] == diceValues[3] - 1 && diceValues[3] == diceValues[4] - 1) )
+                diceValues[2] == diceValues[3] - 1 && diceValues[3] == diceValues[4] - 1))
             {
                 return 40;
             }
@@ -172,6 +179,20 @@ namespace Yathzee
             {
                 return 0;
             }
+        }
+
+        private int checkForChance(int[] diceValues)
+        {
+            return sumValues(diceValues);
+        }
+
+        private int sumTotal()
+        {
+            return scoreValues[ScoreTypeLower.ThreeOfKind] + scoreValues[ScoreTypeLower.FourOfKind] +
+            scoreValues[ScoreTypeLower.FullHouse] + scoreValues[ScoreTypeLower.SmallStraight] +
+            scoreValues[ScoreTypeLower.LargeStraight] +
+            scoreValues[ScoreTypeLower.Yathzee] +
+            scoreValues[ScoreTypeLower.Chance];
         }
     }
 }
