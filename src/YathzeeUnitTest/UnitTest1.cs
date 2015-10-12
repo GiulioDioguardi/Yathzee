@@ -80,30 +80,68 @@ namespace YathzeeUnitTest
             Assert.AreEqual(22, scoreValues["total"]);
         }
         [TestMethod]
-        public void BonusTest()
+        public void BonusTestEarned()
         {
             UpperScoreSection upperSection = new UpperScoreSection();
             Dictionary<string, int> upperBonusEarned = new Dictionary<string, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 1);
+            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(2), new Die(6), new Die(2), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 2);
+            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(3), new Die(3), new Die(6), new Die(3), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 3);
+            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(4), new Die(5), new Die(4), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 4);
+            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(5), new Die(5) };
             upperBonusEarned = upperSection.checkScore(dice, 5);
+            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
 
+            Assert.AreEqual(45, upperBonusEarned["total"], "Bonus is not given when it should");
             dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 6);
-
+            
             Assert.AreEqual(35, upperBonusEarned["bonus"], "Bonus is not given when it should");
+        }
+
+        [TestMethod]
+        public void BonusTestNotEarned()
+        {
+            UpperScoreSection upperSection = new UpperScoreSection();
+            Dictionary<string, int> upperBonusNotEarned = new Dictionary<string, int>();
+
+            Die[] dice = new Die[5] { new Die(1), new Die(2), new Die(1), new Die(2), new Die(4) };
+            upperBonusNotEarned = upperSection.checkScore(dice, 1);
+            Assert.AreEqual(2, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+
+            dice = new Die[5] { new Die(2), new Die(6), new Die(1), new Die(2), new Die(4) };
+            upperBonusNotEarned = upperSection.checkScore(dice, 2);
+            Assert.AreEqual(6, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+
+            dice = new Die[5] { new Die(3), new Die(4), new Die(6), new Die(3), new Die(4) };
+            upperBonusNotEarned = upperSection.checkScore(dice, 3);
+            Assert.AreEqual(12, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+
+            dice = new Die[5] { new Die(4), new Die(5), new Die(4), new Die(2), new Die(4) };
+            upperBonusNotEarned = upperSection.checkScore(dice, 4);
+            Assert.AreEqual(24, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+
+            dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(5), new Die(5) };
+            upperBonusNotEarned = upperSection.checkScore(dice, 5);
+            Assert.AreEqual(39, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+
+            dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(2), new Die(4) };
+            upperBonusNotEarned = upperSection.checkScore(dice, 6);
+            Assert.AreEqual(51, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(0, upperBonusNotEarned["bonus"], "Bonus is given when it shouldn't");
         }
     }
 }

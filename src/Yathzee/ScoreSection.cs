@@ -30,8 +30,7 @@ namespace Yathzee
 
     public class UpperScoreSection : ScoreSection
     {
-        private Dictionary<string, int> scoreValues = new Dictionary<string, int>(
-            );
+        private Dictionary<string, int> scoreValues = new Dictionary<string, int>();
         private bool oneIsSet = false, twoIsSet = false, threeIsSet = false,
             fourIsSet = false, fiveIsSet = false, sixIsSet = false, isInitialized = false;
 
@@ -86,11 +85,13 @@ namespace Yathzee
 
             if (areAllSet())
             {
+                scoreValues["bonus"] = 0;
                 if(isBonusEarned())
                 {
                     scoreValues["bonus"] = 35;
                 }
             }
+
             setTotal(sumTotal());
             scoreValues["total"] = getTotal();
             return scoreValues;
