@@ -146,4 +146,22 @@ namespace YathzeeUnitTest
             Assert.AreEqual(0, upperBonusNotEarned["bonus"], "Bonus is given when it shouldn't");
         }
     }
+    [TestClass]
+    public class LowerBoundScoreSectionTest
+    {
+        [TestMethod]
+        public void ThreeOfKindTest()
+        {
+            LowerScoreSection lowerSection = new LowerScoreSection();
+            Dictionary<string, int> threeOfKind = new Dictionary<string, int>();
+
+            Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(4) };
+            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
+            Assert.AreEqual(9, threeOfKind["ThreeOfKind"]);
+
+             dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
+            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
+            Assert.AreEqual(0, threeOfKind["ThreeOfKind"]);
+        }
+    }
 }
