@@ -18,12 +18,14 @@ namespace YathzeeUnitTest
             }
         }
 
-        /*  [TestMethod]
+       /*   [TestMethod]
           public void DieImageTest()
           {
               Die die = new Die(0);
               DieImage image = new DieImage();
-              Assert.AreEqual(image.getDieBlank(), die.getDieImage());
+              System.Drawing.Image expected = image.getDieBlank();
+              System.Drawing.Image actual = die.getDieImage();
+              Assert.AreEqual(expected, actual);
           }*/
 
         [TestMethod]

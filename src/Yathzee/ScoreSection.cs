@@ -101,7 +101,7 @@ namespace Yathzee
         {
             int sum = scoreValues["one"] + scoreValues["two"] + scoreValues["three"] + 
                 scoreValues["four"] + scoreValues["five"] + scoreValues["six"];
-            if (sum <= 63)
+            if (sum >= 63)
             {
                 return true;
             }
