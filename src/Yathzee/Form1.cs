@@ -21,7 +21,11 @@ namespace Yathzee
         {
             Die[] dice = new Die[5];
             DiceGenerator generator = new DiceGenerator();
-            dice = generator.generateDice();
+            for (int i = 0; i < dice.Length; i++)
+            {
+                dice[i] = generator.generateDice();
+            }
+            
             for (int i = 0; i < dice.Length; i++)
             {
                 Console.WriteLine(dice[i].getDieValue());

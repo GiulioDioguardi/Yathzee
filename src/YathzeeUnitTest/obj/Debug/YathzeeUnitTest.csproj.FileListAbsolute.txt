@@ -1,0 +1,7 @@
+C:\Users\gdioguardi\Documents\Yathzee\src\YathzeeUnitTest\bin\Debug\YathzeeUnitTest.dll
+C:\Users\gdioguardi\Documents\Yathzee\src\YathzeeUnitTest\bin\Debug\YathzeeUnitTest.pdb
+C:\Users\gdioguardi\Documents\Yathzee\src\YathzeeUnitTest\bin\Debug\Yathzee.exe
+C:\Users\gdioguardi\Documents\Yathzee\src\YathzeeUnitTest\bin\Debug\Yathzee.pdb
+C:\Users\gdioguardi\Documents\Yathzee\src\YathzeeUnitTest\obj\Debug\YathzeeUnitTest.csprojResolveAssemblyReference.cache
+C:\Users\gdioguardi\Documents\Yathzee\src\YathzeeUnitTest\obj\Debug\YathzeeUnitTest.dll
+C:\Users\gdioguardi\Documents\Yathzee\src\YathzeeUnitTest\obj\Debug\YathzeeUnitTest.pdb

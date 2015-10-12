@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace Yathzee
 {
-    class Die
+    public class Die
     {
         DieImage image = new DieImage();
         private int dieValue;
         private System.Drawing.Image dieImage;
+
+        public Die()
+        { }
+
+        public Die(int value)
+        {
+            setDie(value);
+        }
 
         public void setDie(int value)
         {

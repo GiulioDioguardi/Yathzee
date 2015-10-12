@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Yathzee
 {
-    class DieImage
+    public class DieImage
     {
         private System.Drawing.Image die1 = global::Yathzee.Properties.Resources.die1;
         private System.Drawing.Image die2 = global::Yathzee.Properties.Resources.die2;

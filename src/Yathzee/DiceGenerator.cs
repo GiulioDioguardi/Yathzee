@@ -7,20 +7,14 @@ using System.Threading.Tasks;
 
 namespace Yathzee
 {
-    class DiceGenerator
+    public class DiceGenerator
     {
-        public Die[] generateDice()
+        public Die generateDice()
         {
             Random rnd = new Random();
-            Die[] dieCollection = new Die[5];
-            for (int i = 0; i < dieCollection.Length;i++ )
-            {
-                Die die = new Die();
-                int value = rnd.Next(1, 6);
-                die.setDie(value);
-                dieCollection[i] = die;
-            }   
-            return dieCollection;
+            int value = rnd.Next(1, 6);
+            Die die = new Die(value);
+            return die;
         }
     }
 }
