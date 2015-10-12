@@ -18,15 +18,15 @@ namespace YathzeeUnitTest
             }
         }
 
-       /*   [TestMethod]
-          public void DieImageTest()
-          {
-              Die die = new Die(0);
-              DieImage image = new DieImage();
-              System.Drawing.Image expected = image.getDieBlank();
-              System.Drawing.Image actual = die.getDieImage();
-              Assert.AreEqual(expected, actual);
-          }*/
+        /*   [TestMethod]
+           public void DieImageTest()
+           {
+               Die die = new Die(0);
+               DieImage image = new DieImage();
+               System.Drawing.Image expected = image.getDieBlank();
+               System.Drawing.Image actual = die.getDieImage();
+               Assert.AreEqual(expected, actual);
+           }*/
 
         [TestMethod]
         public void DiceGeneratorTest()
@@ -110,7 +110,7 @@ namespace YathzeeUnitTest
             Assert.AreEqual(45, upperBonusEarned["total"], "Bonus is not given when it should");
             dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 6);
-            
+
             Assert.AreEqual(35, upperBonusEarned["bonus"], "Bonus is not given when it should");
         }
 
@@ -172,7 +172,7 @@ namespace YathzeeUnitTest
             Assert.AreEqual(0, threeOfKind["ThreeOfKind"]);
         }
 
-    [TestMethod]
+        [TestMethod]
         public void FourOfKindTest()
         {
             LowerScoreSection lowerSection = new LowerScoreSection();
@@ -189,6 +189,24 @@ namespace YathzeeUnitTest
             dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
             fourOfKind = lowerSection.checkScore(dice, "FourOfKind");
             Assert.AreEqual(0, fourOfKind["FourOfKind"]);
+        }
+        [TestMethod]
+        public void FullHouseTest()
+        {
+            LowerScoreSection lowerSection = new LowerScoreSection();
+            Dictionary<string, int> fullHouse = new Dictionary<string, int>();
+
+            Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(2) };
+            fullHouse = lowerSection.checkScore(dice, "FullHouse");
+            Assert.AreEqual(25, fullHouse["FullHouse"]);
+
+            dice = new Die[5] { new Die(3), new Die(3), new Die(3), new Die(2), new Die(2) };
+            fullHouse = lowerSection.checkScore(dice, "FullHouse");
+            Assert.AreEqual(25, fullHouse["FullHouse"]);
+
+            dice = new Die[5] { new Die(1), new Die(5), new Die(1), new Die(4), new Die(2) };
+            fullHouse = lowerSection.checkScore(dice, "FullHouse");
+            Assert.AreEqual(0, fullHouse["FullHouse"]);
         }
     }
 }

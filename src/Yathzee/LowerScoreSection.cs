@@ -51,6 +51,10 @@ namespace Yathzee
                     scoreValues[scoreType] = checkForFourOfKind(diceValues);
                     fourOfKindIsSet = true;
                     break;
+                case "FullHouse":
+                    scoreValues[scoreType] = checkForFullHouse(diceValues);
+                    fullHouseIsSet = true;
+                    break;
                 default:
                     break;
             }
@@ -66,11 +70,12 @@ namespace Yathzee
             }
             return sum;
         }
+
         private int checkForThreeOfKind(int[] diceValues)
         {
-            if ( (diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2]) ||
+            if ((diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2]) ||
                  (diceValues[1] == diceValues[2] && diceValues[1] == diceValues[3]) ||
-                 (diceValues[2] == diceValues[3] && diceValues[2] == diceValues[4])  )
+                 (diceValues[2] == diceValues[3] && diceValues[2] == diceValues[4]))
             {
                 return sumValues(diceValues);
             }
@@ -82,12 +87,27 @@ namespace Yathzee
 
         private int checkForFourOfKind(int[] diceValues)
         {
-            if ( (diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
+            if ((diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
                   diceValues[0] == diceValues[3]) ||
                  (diceValues[1] == diceValues[2] && diceValues[1] == diceValues[3] &&
                   diceValues[1] == diceValues[4]))
             {
                 return sumValues(diceValues);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private int checkForFullHouse(int[] diceValues)
+        {
+            if ((diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
+                 diceValues[3] == diceValues[4]) ||
+                (diceValues[0] == diceValues[1] &&
+                 diceValues[2] == diceValues[3] && diceValues[2] == diceValues[4]))
+            {
+                return 25;
             }
             else
             {
