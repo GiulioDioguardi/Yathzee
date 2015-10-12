@@ -8,24 +8,24 @@ namespace Yathzee
 {
     public class LowerScoreSection : ScoreSection
     {
-        private Dictionary<string, int> scoreValues = new Dictionary<string, int>();
+        private Dictionary<ScoreTypeLower, int> scoreValues = new Dictionary<ScoreTypeLower, int>();
         private bool threeOfKindIsSet = false, fourOfKindIsSet = false, fullHouseIsSet = false,
             smallStraightIsSet = false, largeStraightIsSet = false, yathzeeIsSet = false,
             chanceIsSet = false, isInitialized = false;
 
         private void initializeScoreValues()
         {
-            scoreValues.Add("ThreeOfKind", 0);
-            scoreValues.Add("FourOfKind", 0);
-            scoreValues.Add("FullHouse", 0);
-            scoreValues.Add("SmallStraight", 0);
-            scoreValues.Add("LargeStraight", 0);
-            scoreValues.Add("Yathzee", 0);
-            scoreValues.Add("Chance", 0);
-            scoreValues.Add("total", getTotal());
+            scoreValues.Add(ScoreTypeLower.ThreeOfKind, 0);
+            scoreValues.Add(ScoreTypeLower.FourOfKind, 0);
+            scoreValues.Add(ScoreTypeLower.FullHouse, 0);
+            scoreValues.Add(ScoreTypeLower.SmallStraight, 0);
+            scoreValues.Add(ScoreTypeLower.LargeStraight, 0);
+            scoreValues.Add(ScoreTypeLower.Yathzee, 0);
+            scoreValues.Add(ScoreTypeLower.Chance, 0);
+            scoreValues.Add(ScoreTypeLower.Total, getTotal());
         }
 
-        public Dictionary<string, int> checkScore(Die[] dice, string scoreType)
+        public Dictionary<ScoreTypeLower, int> checkScore(Die[] dice, ScoreTypeLower scoreType)
         {
             if (!isInitialized)
             {
@@ -43,15 +43,15 @@ namespace Yathzee
 
             switch (scoreType)
             {
-                case "ThreeOfKind":
-                    scoreValues[scoreType] = checkForThreeOfKind(diceValues);
+                case ScoreTypeLower.ThreeOfKind:
+                    scoreValues[ScoreTypeLower.ThreeOfKind] = checkForThreeOfKind(diceValues);
                     threeOfKindIsSet = true;
                     break;
-                case "FourOfKind":
+                case ScoreTypeLower.FourOfKind:
                     scoreValues[scoreType] = checkForFourOfKind(diceValues);
                     fourOfKindIsSet = true;
                     break;
-                case "FullHouse":
+                case ScoreTypeLower.FullHouse:
                     scoreValues[scoreType] = checkForFullHouse(diceValues);
                     fullHouseIsSet = true;
                     break;

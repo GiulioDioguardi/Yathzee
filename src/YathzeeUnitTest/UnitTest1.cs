@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using Yathzee;
 
-namespace YathzeeUnitTest
+namespace Yathzee
 {
     [TestClass]
     public class DieTests
@@ -49,13 +49,13 @@ namespace YathzeeUnitTest
         {
             UpperScoreSection upperSection = new UpperScoreSection();
             Die[] dice = new Die[5] { new Die(3), new Die(1), new Die(1), new Die(4), new Die(6) };
-            Dictionary<string, int> upper = new Dictionary<string, int>();
+            Dictionary<ScoreTypeUpper, int> upper = new Dictionary<ScoreTypeUpper, int>();
             upper = upperSection.checkScore(dice, 1);
-            Assert.AreEqual(2, upper["one"], "Error in ones");
+            Assert.AreEqual(2, upper[ScoreTypeUpper.One], "Error in ones");
             upper = upperSection.checkScore(dice, 3);
-            Assert.AreEqual(3, upper["three"], "Error in threes");
+            Assert.AreEqual(3, upper[ScoreTypeUpper.Three], "Error in threes");
             upper = upperSection.checkScore(dice, 4);
-            Assert.AreEqual(4, upper["four"], "Error in fours");
+            Assert.AreEqual(4, upper[ScoreTypeUpper.Four], "Error in fours");
         }
 
         [TestMethod]
@@ -63,9 +63,9 @@ namespace YathzeeUnitTest
         {
             UpperScoreSection upperSection = new UpperScoreSection();
             Die[] dice = new Die[5] { new Die(5), new Die(2), new Die(3), new Die(6), new Die(6) };
-            Dictionary<string, int> upper = new Dictionary<string, int>();
+            Dictionary<ScoreTypeUpper, int> upper = new Dictionary<ScoreTypeUpper, int>();
             upper = upperSection.checkScore(dice, 1);
-            Assert.AreEqual(0, upper["one"], "Error in ones, zero score expected");
+            Assert.AreEqual(0, upper[ScoreTypeUpper.One], "Error in ones, zero score expected");
         }
 
         [TestMethod]
@@ -73,77 +73,77 @@ namespace YathzeeUnitTest
         {
 
             UpperScoreSection upperSection = new UpperScoreSection();
-            Dictionary<string, int> scoreValues = new Dictionary<string, int>();
+            Dictionary<ScoreTypeUpper, int> scoreValues = new Dictionary<ScoreTypeUpper, int>();
             Die[] dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(2), new Die(4) };
             scoreValues = upperSection.checkScore(dice, 6);
-            Assert.AreEqual(18, scoreValues["total"]);
+            Assert.AreEqual(18, scoreValues[ScoreTypeUpper.Total]);
             dice = new Die[5] { new Die(6), new Die(6), new Die(2), new Die(2), new Die(4) };
             scoreValues = upperSection.checkScore(dice, 2);
-            Assert.AreEqual(22, scoreValues["total"]);
+            Assert.AreEqual(22, scoreValues[ScoreTypeUpper.Total]);
         }
         [TestMethod]
         public void BonusTestEarned()
         {
             UpperScoreSection upperSection = new UpperScoreSection();
-            Dictionary<string, int> upperBonusEarned = new Dictionary<string, int>();
+            Dictionary<ScoreTypeUpper, int> upperBonusEarned = new Dictionary<ScoreTypeUpper, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 1);
-            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(2), new Die(6), new Die(2), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 2);
-            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(3), new Die(3), new Die(6), new Die(3), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 3);
-            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(4), new Die(5), new Die(4), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 4);
-            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(5), new Die(5) };
             upperBonusEarned = upperSection.checkScore(dice, 5);
-            Assert.AreEqual(0, upperBonusEarned["bonus"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
-            Assert.AreEqual(45, upperBonusEarned["total"], "Bonus is not given when it should");
+            Assert.AreEqual(45, upperBonusEarned[ScoreTypeUpper.Total], "Bonus is not given when it should");
             dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(2), new Die(4) };
             upperBonusEarned = upperSection.checkScore(dice, 6);
 
-            Assert.AreEqual(35, upperBonusEarned["bonus"], "Bonus is not given when it should");
+            Assert.AreEqual(35, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is not given when it should");
         }
 
         [TestMethod]
         public void BonusTestNotEarned()
         {
             UpperScoreSection upperSection = new UpperScoreSection();
-            Dictionary<string, int> upperBonusNotEarned = new Dictionary<string, int>();
+            Dictionary<ScoreTypeUpper, int> upperBonusNotEarned = new Dictionary<ScoreTypeUpper, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(2), new Die(1), new Die(2), new Die(4) };
             upperBonusNotEarned = upperSection.checkScore(dice, 1);
-            Assert.AreEqual(2, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(2, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(2), new Die(6), new Die(1), new Die(2), new Die(4) };
             upperBonusNotEarned = upperSection.checkScore(dice, 2);
-            Assert.AreEqual(6, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(6, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(3), new Die(4), new Die(6), new Die(3), new Die(4) };
             upperBonusNotEarned = upperSection.checkScore(dice, 3);
-            Assert.AreEqual(12, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(12, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(4), new Die(5), new Die(4), new Die(2), new Die(4) };
             upperBonusNotEarned = upperSection.checkScore(dice, 4);
-            Assert.AreEqual(24, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(24, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(5), new Die(5) };
             upperBonusNotEarned = upperSection.checkScore(dice, 5);
-            Assert.AreEqual(39, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(39, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(2), new Die(4) };
             upperBonusNotEarned = upperSection.checkScore(dice, 6);
-            Assert.AreEqual(51, upperBonusNotEarned["total"], "Bonus is given when it shouldn't");
-            Assert.AreEqual(0, upperBonusNotEarned["bonus"], "Bonus is given when it shouldn't");
+            Assert.AreEqual(51, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
+            Assert.AreEqual(0, upperBonusNotEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
         }
     }
     [TestClass]
@@ -153,60 +153,60 @@ namespace YathzeeUnitTest
         public void ThreeOfKindTest()
         {
             LowerScoreSection lowerSection = new LowerScoreSection();
-            Dictionary<string, int> threeOfKind = new Dictionary<string, int>();
+            Dictionary<ScoreTypeLower, int> threeOfKind = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(4) };
-            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
-            Assert.AreEqual(9, threeOfKind["ThreeOfKind"]);
+            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            Assert.AreEqual(9, threeOfKind[ScoreTypeLower.ThreeOfKind]);
 
             dice = new Die[5] { new Die(4), new Die(2), new Die(1), new Die(2), new Die(2) };
-            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
-            Assert.AreEqual(11, threeOfKind["ThreeOfKind"]);
+            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            Assert.AreEqual(11, threeOfKind[ScoreTypeLower.ThreeOfKind]);
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(6), new Die(2) };
-            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
-            Assert.AreEqual(25, threeOfKind["ThreeOfKind"]);
+            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            Assert.AreEqual(25, threeOfKind[ScoreTypeLower.ThreeOfKind]);
 
             dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
-            threeOfKind = lowerSection.checkScore(dice, "ThreeOfKind");
-            Assert.AreEqual(0, threeOfKind["ThreeOfKind"]);
+            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            Assert.AreEqual(0, threeOfKind[ScoreTypeLower.ThreeOfKind]);
         }
 
         [TestMethod]
         public void FourOfKindTest()
         {
             LowerScoreSection lowerSection = new LowerScoreSection();
-            Dictionary<string, int> fourOfKind = new Dictionary<string, int>();
+            Dictionary<ScoreTypeLower, int> fourOfKind = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(1), new Die(4) };
-            fourOfKind = lowerSection.checkScore(dice, "FourOfKind");
-            Assert.AreEqual(8, fourOfKind["FourOfKind"]);
+            fourOfKind = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            Assert.AreEqual(8, fourOfKind[ScoreTypeLower.FourOfKind]);
 
             dice = new Die[5] { new Die(3), new Die(4), new Die(4), new Die(4), new Die(4) };
-            fourOfKind = lowerSection.checkScore(dice, "FourOfKind");
-            Assert.AreEqual(19, fourOfKind["FourOfKind"]);
+            fourOfKind = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            Assert.AreEqual(19, fourOfKind[ScoreTypeLower.FourOfKind]);
 
             dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
-            fourOfKind = lowerSection.checkScore(dice, "FourOfKind");
-            Assert.AreEqual(0, fourOfKind["FourOfKind"]);
+            fourOfKind = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            Assert.AreEqual(0, fourOfKind[ScoreTypeLower.FourOfKind]);
         }
         [TestMethod]
         public void FullHouseTest()
         {
             LowerScoreSection lowerSection = new LowerScoreSection();
-            Dictionary<string, int> fullHouse = new Dictionary<string, int>();
+            Dictionary<ScoreTypeLower, int> fullHouse = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(2) };
-            fullHouse = lowerSection.checkScore(dice, "FullHouse");
-            Assert.AreEqual(25, fullHouse["FullHouse"]);
+            fullHouse = lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            Assert.AreEqual(25, fullHouse[ScoreTypeLower.FullHouse]);
 
             dice = new Die[5] { new Die(3), new Die(3), new Die(3), new Die(2), new Die(2) };
-            fullHouse = lowerSection.checkScore(dice, "FullHouse");
-            Assert.AreEqual(25, fullHouse["FullHouse"]);
+            fullHouse = lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            Assert.AreEqual(25, fullHouse[ScoreTypeLower.FullHouse]);
 
             dice = new Die[5] { new Die(1), new Die(5), new Die(1), new Die(4), new Die(2) };
-            fullHouse = lowerSection.checkScore(dice, "FullHouse");
-            Assert.AreEqual(0, fullHouse["FullHouse"]);
+            fullHouse = lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            Assert.AreEqual(0, fullHouse[ScoreTypeLower.FullHouse]);
         }
     }
 }

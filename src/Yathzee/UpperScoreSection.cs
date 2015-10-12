@@ -8,23 +8,23 @@ namespace Yathzee
 {
     public class UpperScoreSection : ScoreSection
     {
-        private Dictionary<string, int> scoreValues = new Dictionary<string, int>();
+        private Dictionary<ScoreTypeUpper, int> scoreValues = new Dictionary<ScoreTypeUpper, int>();
         private bool oneIsSet = false, twoIsSet = false, threeIsSet = false,
             fourIsSet = false, fiveIsSet = false, sixIsSet = false, isInitialized = false;
 
         private void initializeScoreValues()
         {
-            scoreValues.Add("one", 0);
-            scoreValues.Add("two", 0);
-            scoreValues.Add("three", 0);
-            scoreValues.Add("four", 0);
-            scoreValues.Add("five", 0);
-            scoreValues.Add("six", 0);
-            scoreValues.Add("bonus", 0);
-            scoreValues.Add("total", getTotal());
+            scoreValues.Add(ScoreTypeUpper.One, 0);
+            scoreValues.Add(ScoreTypeUpper.Two, 0);
+            scoreValues.Add(ScoreTypeUpper.Three, 0);
+            scoreValues.Add(ScoreTypeUpper.Four, 0);
+            scoreValues.Add(ScoreTypeUpper.Five, 0);
+            scoreValues.Add(ScoreTypeUpper.Six, 0);
+            scoreValues.Add(ScoreTypeUpper.Bonus, 0);
+            scoreValues.Add(ScoreTypeUpper.Total, getTotal());
         }
 
-        public Dictionary<string, int> checkScore(Die[] dice, int checkedValue)
+        public Dictionary<ScoreTypeUpper, int> checkScore(Die[] dice, int checkedValue)
         {
             if (!isInitialized)
             {
@@ -40,27 +40,27 @@ namespace Yathzee
             switch (checkedValue)
             {
                 case 1:
-                    scoreValues["one"] = sumScore(diceValues, checkedValue);
+                    scoreValues[ScoreTypeUpper.One] = sumScore(diceValues, checkedValue);
                     oneIsSet = true;
                     break;
                 case 2:
-                    scoreValues["two"] = sumScore(diceValues, checkedValue);
+                    scoreValues[ScoreTypeUpper.Two] = sumScore(diceValues, checkedValue);
                     twoIsSet = true;
                     break;
                 case 3:
-                    scoreValues["three"] = sumScore(diceValues, checkedValue);
+                    scoreValues[ScoreTypeUpper.Three] = sumScore(diceValues, checkedValue);
                     threeIsSet = true;
                     break;
                 case 4:
-                    scoreValues["four"] = sumScore(diceValues, checkedValue);
+                    scoreValues[ScoreTypeUpper.Four] = sumScore(diceValues, checkedValue);
                     fourIsSet = true;
                     break;
                 case 5:
-                    scoreValues["five"] = sumScore(diceValues, checkedValue);
+                    scoreValues[ScoreTypeUpper.Five] = sumScore(diceValues, checkedValue);
                     fiveIsSet = true;
                     break;
                 case 6:
-                    scoreValues["six"] = sumScore(diceValues, checkedValue);
+                    scoreValues[ScoreTypeUpper.Six] = sumScore(diceValues, checkedValue);
                     sixIsSet = true;
                     break;
                 default:
@@ -69,22 +69,24 @@ namespace Yathzee
 
             if (areAllSet())
             {
-                scoreValues["bonus"] = 0;
+                scoreValues[ScoreTypeUpper.Bonus] = 0;
                 if (isBonusEarned())
                 {
-                    scoreValues["bonus"] = 35;
+                    scoreValues[ScoreTypeUpper.Bonus] = 35;
                 }
             }
 
             setTotal(sumTotal());
-            scoreValues["total"] = getTotal();
+            scoreValues[ScoreTypeUpper.Total] = getTotal();
             return scoreValues;
         }
 
         private bool isBonusEarned()
         {
-            int sum = scoreValues["one"] + scoreValues["two"] + scoreValues["three"] +
-                scoreValues["four"] + scoreValues["five"] + scoreValues["six"];
+            int sum = scoreValues[ScoreTypeUpper.One] + scoreValues[ScoreTypeUpper.Two] +
+                scoreValues[ScoreTypeUpper.Three] + scoreValues[ScoreTypeUpper.Four] +
+                scoreValues[ScoreTypeUpper.Five] + scoreValues[ScoreTypeUpper.Six];
+
             if (sum >= 63)
             {
                 return true;
@@ -109,9 +111,10 @@ namespace Yathzee
 
         private int sumTotal()
         {
-            return scoreValues["one"] + scoreValues["two"] + scoreValues["three"] +
-                scoreValues["four"] + scoreValues["five"] + scoreValues["six"] +
-                scoreValues["bonus"];
+            return scoreValues[ScoreTypeUpper.One] + scoreValues[ScoreTypeUpper.Two] +
+                scoreValues[ScoreTypeUpper.Three] + scoreValues[ScoreTypeUpper.Four] +
+                scoreValues[ScoreTypeUpper.Five] + scoreValues[ScoreTypeUpper.Six] +
+                scoreValues[ScoreTypeUpper.Bonus];
         }
 
         private int sumScore(int[] diceValues, int dieValue)
