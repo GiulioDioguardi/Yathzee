@@ -18,16 +18,23 @@ namespace Yathzee
     {
         ThreeOfKind, FourOfKind, FullHouse, SmallStraight, LargeStraight,
         Yathzee, Chance, Total
-    };    
+    };
 
     public partial class Form1 : Form
     {
+        Dictionary<ScoreTypeUpper, int> upperScores = new Dictionary<ScoreTypeUpper, int>();
+        UpperScoreSection upperSection = new UpperScoreSection();
+
+        Dictionary<ScoreTypeLower, int> lowerScores = new Dictionary<ScoreTypeLower, int>();
+        LowerScoreSection lowerSection = new LowerScoreSection();
+
+        Die[] dice = new Die[5];
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        Die[] dice = new Die[5];
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -74,7 +81,7 @@ namespace Yathzee
 
             for (int i = 0; i < upperSection.Length; i++)
             {
-                if(upperSection[i].Checked)
+                if (upperSection[i].Checked)
                 {
                     upperSection[i].Enabled = false;
                 }
@@ -95,6 +102,57 @@ namespace Yathzee
                     lowerSection[i].Enabled = isEnabled;
                 }
             }
+        }
+
+        private void checkBoxUpperSection_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox currentCheckBox = (CheckBox)sender;
+            Label currentLabel = null;
+            ScoreTypeUpper scoreType = ScoreTypeUpper.Total;
+            int checkedValue;
+            switch (currentCheckBox.Name)
+            {
+                case "checkBox6":
+                    scoreType = ScoreTypeUpper.One;
+                    checkedValue = 1;
+                    currentLabel = label2;
+                    break;
+                case "checkBox7":
+                    scoreType = ScoreTypeUpper.Two;
+                    checkedValue = 2;
+                    currentLabel = label4;
+                    break;
+                case "checkBox8":
+                    scoreType = ScoreTypeUpper.Three;
+                    checkedValue = 3;
+                    currentLabel = label6;
+                    break;
+                case "checkBox9":
+                    scoreType = ScoreTypeUpper.Four;
+                    checkedValue = 4;
+                    currentLabel = label8;
+                    break;
+                case "checkBox10":
+                    scoreType = ScoreTypeUpper.Five;
+                    checkedValue = 5;
+                    currentLabel = label10;
+                    break;
+                case "checkBox11":
+                    scoreType = ScoreTypeUpper.Six;
+                    checkedValue = 6;
+                    currentLabel = label12;
+                    break;
+                default:
+                    checkedValue = 0;
+                    break;
+            }
+            
+            upperScores = upperSection.checkScore(dice, checkedValue);
+
+            currentLabel.Text = upperScores[scoreType].ToString();
+            label14.Text = upperScores[ScoreTypeUpper.Bonus].ToString();
+
+            label16.Text = upperScores[ScoreTypeUpper.Total].ToString();
         }
     }
 }

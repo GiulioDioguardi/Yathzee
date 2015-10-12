@@ -285,6 +285,7 @@
             this.checkBox6.TabIndex = 1;
             this.checkBox6.Text = " ";
             this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBoxUpperSection_CheckedChanged);
             // 
             // label2
             // 
@@ -313,6 +314,7 @@
             this.checkBox7.TabIndex = 4;
             this.checkBox7.Text = " ";
             this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBoxUpperSection_CheckedChanged);
             // 
             // label4
             // 
@@ -341,6 +343,7 @@
             this.checkBox8.TabIndex = 7;
             this.checkBox8.Text = " ";
             this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBoxUpperSection_CheckedChanged);
             // 
             // label6
             // 
@@ -369,6 +372,7 @@
             this.checkBox9.TabIndex = 10;
             this.checkBox9.Text = " ";
             this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBoxUpperSection_CheckedChanged);
             // 
             // label8
             // 
@@ -397,6 +401,7 @@
             this.checkBox10.TabIndex = 13;
             this.checkBox10.Text = " ";
             this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBoxUpperSection_CheckedChanged);
             // 
             // label10
             // 
@@ -425,6 +430,7 @@
             this.checkBox11.TabIndex = 16;
             this.checkBox11.Text = " ";
             this.checkBox11.UseVisualStyleBackColor = true;
+            this.checkBox11.CheckedChanged += new System.EventHandler(this.checkBoxUpperSection_CheckedChanged);
             // 
             // label12
             // 
