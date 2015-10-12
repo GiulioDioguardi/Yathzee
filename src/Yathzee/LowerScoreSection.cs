@@ -63,6 +63,10 @@ namespace Yathzee
                     scoreValues[scoreType] = checkForLargeStraight(diceValues);
                     largeStraightIsSet = true;
                     break;
+                case ScoreTypeLower.Yathzee:
+                    scoreValues[scoreType] = checkForYathzee(diceValues);
+                    yathzeeIsSet = true;
+                    break;
                 default:
                     break;
             }
@@ -150,6 +154,19 @@ namespace Yathzee
                 diceValues[2] == diceValues[3] - 1 && diceValues[3] == diceValues[4] - 1) )
             {
                 return 40;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private int checkForYathzee(int[] diceValues)
+        {
+            if (diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
+                diceValues[0] == diceValues[3] && diceValues[0] == diceValues[4])
+            {
+                return 50;
             }
             else
             {
