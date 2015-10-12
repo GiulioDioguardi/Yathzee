@@ -11,7 +11,12 @@ namespace Yathzee
         private Dictionary<ScoreTypeLower, int> scoreValues = new Dictionary<ScoreTypeLower, int>();
         private bool threeOfKindIsSet = false, fourOfKindIsSet = false, fullHouseIsSet = false,
             smallStraightIsSet = false, largeStraightIsSet = false, yathzeeIsSet = false,
-            chanceIsSet = false, isInitialized = false;
+            chanceIsSet = false;
+
+        public LowerScoreSection()
+        {
+            initializeScoreValues();
+        }
 
         private void initializeScoreValues()
         {
@@ -27,12 +32,6 @@ namespace Yathzee
 
         public Dictionary<ScoreTypeLower, int> checkScore(Die[] dice, ScoreTypeLower scoreType)
         {
-            if (!isInitialized)
-            {
-                initializeScoreValues();
-                isInitialized = true;
-            }
-
             int[] diceValues = new int[5];
             for (int i = 0; i < dice.Length; i++)
             {

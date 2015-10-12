@@ -10,8 +10,12 @@ namespace Yathzee
     {
         private Dictionary<ScoreTypeUpper, int> scoreValues = new Dictionary<ScoreTypeUpper, int>();
         private bool oneIsSet = false, twoIsSet = false, threeIsSet = false,
-            fourIsSet = false, fiveIsSet = false, sixIsSet = false, isInitialized = false;
+            fourIsSet = false, fiveIsSet = false, sixIsSet = false;
 
+        public UpperScoreSection()
+        {
+            initializeScoreValues();
+        }
         private void initializeScoreValues()
         {
             scoreValues.Add(ScoreTypeUpper.One, 0);
@@ -26,12 +30,6 @@ namespace Yathzee
 
         public Dictionary<ScoreTypeUpper, int> checkScore(Die[] dice, int checkedValue)
         {
-            if (!isInitialized)
-            {
-                initializeScoreValues();
-                isInitialized = true;
-            }
-
             int[] diceValues = new int[5];
             for (int i = 0; i < dice.Length; i++)
             {

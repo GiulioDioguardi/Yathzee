@@ -30,6 +30,8 @@ namespace Yathzee
 
         Die[] dice = new Die[5];
 
+        int rollRemain = 3;
+
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace Yathzee
             timer1.Start();
             timer2.Start();
             setAllEnabled(false);
+            rollRemain--;
+            label36.Text = rollRemain.ToString();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -68,17 +72,46 @@ namespace Yathzee
             setAllEnabled(true);
         }
 
+        private void newRoll()
+        {
+            setAllEnabled(false);
+            rollRemain = 3;
+            label36.Text = rollRemain.ToString();
+            button1.Enabled = true;
+
+            CheckBox[] holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
+
+            for (int i = 0; i < holds.Length; i++)
+            {
+                holds[i].Checked = false;
+            }
+
+        }
+
         private void setAllEnabled(bool isEnabled)
         {
             CheckBox[] holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
             CheckBox[] upperSection = new CheckBox[] { checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11 };
             CheckBox[] lowerSection = new CheckBox[] { checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18 };
 
-            for (int i = 0; i < holds.Length; i++)
+            if (rollRemain == 0)
             {
-                holds[i].Enabled = isEnabled;
-            }
+                 button1.Enabled = false;
 
+                for (int i = 0; i < holds.Length; i++)
+                {
+                    holds[i].Enabled = false;
+                }
+            }
+            else
+            {
+                button1.Enabled = isEnabled;
+
+                for (int i = 0; i < holds.Length; i++)
+                {
+                    holds[i].Enabled = isEnabled;
+                }
+            }
             for (int i = 0; i < upperSection.Length; i++)
             {
                 if (upperSection[i].Checked)
@@ -146,13 +179,22 @@ namespace Yathzee
                     checkedValue = 0;
                     break;
             }
-            
+
             upperScores = upperSection.checkScore(dice, checkedValue);
 
             currentLabel.Text = upperScores[scoreType].ToString();
             label14.Text = upperScores[ScoreTypeUpper.Bonus].ToString();
 
             label16.Text = upperScores[ScoreTypeUpper.Total].ToString();
+
+            label34.Text = (upperScores[ScoreTypeUpper.Total] + lowerScores[ScoreTypeLower.Total]).ToString();
+
+            newRoll();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            newRoll();
         }
     }
 }
