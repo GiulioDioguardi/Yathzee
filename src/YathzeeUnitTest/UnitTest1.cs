@@ -208,5 +208,36 @@ namespace Yathzee
             fullHouse = lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
             Assert.AreEqual(0, fullHouse[ScoreTypeLower.FullHouse]);
         }
+
+        [TestMethod]
+        public void SmallStraightTest()
+        {
+            LowerScoreSection lowerSection = new LowerScoreSection();
+            Dictionary<ScoreTypeLower, int> smallStraight = new Dictionary<ScoreTypeLower, int>();
+
+            Die[] dice = new Die[5] { new Die(1), new Die(2), new Die(3), new Die(4), new Die(6) };
+            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
+
+            dice = new Die[5] { new Die(2), new Die(3), new Die(4), new Die(4), new Die(5) };
+            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
+
+            dice = new Die[5] { new Die(1), new Die(2), new Die(2), new Die(3), new Die(4) };
+            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
+
+            dice = new Die[5] { new Die(2), new Die(2), new Die(3), new Die(4), new Die(5) };
+            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
+
+            dice = new Die[5] { new Die(1), new Die(2), new Die(3), new Die(4), new Die(5) };
+            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
+
+            dice = new Die[5] { new Die(1), new Die(1), new Die(3), new Die(4), new Die(6) };
+            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            Assert.AreEqual(0, smallStraight[ScoreTypeLower.SmallStraight]);
+        }
     }
 }

@@ -55,6 +55,10 @@ namespace Yathzee
                     scoreValues[scoreType] = checkForFullHouse(diceValues);
                     fullHouseIsSet = true;
                     break;
+                case ScoreTypeLower.SmallStraight:
+                    scoreValues[scoreType] = checkForSmallStraight(diceValues);
+                    smallStraightIsSet = true;
+                    break;
                 default:
                     break;
             }
@@ -108,6 +112,27 @@ namespace Yathzee
                  diceValues[2] == diceValues[3] && diceValues[2] == diceValues[4]))
             {
                 return 25;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private int checkForSmallStraight(int[] diceValues)
+        {
+            if ((diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[2] - 1 &&
+                diceValues[2] == diceValues[3] - 1) ||
+                (diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[2] - 1 &&
+                diceValues[2] ==  diceValues[4] - 1) ||
+                (diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[3] - 1 &&
+                diceValues[3] == diceValues[4] - 1) ||
+                (diceValues[0] == diceValues[2] - 1 && diceValues[2] == diceValues[3] - 1 &&
+                diceValues[3] == diceValues[4] - 1) ||
+                (diceValues[1] == diceValues[2] - 1 && diceValues[2] == diceValues[3] - 1 &&
+                diceValues[3] == diceValues[4] - 1))
+            {
+                return 30;
             }
             else
             {
