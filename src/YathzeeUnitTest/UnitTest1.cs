@@ -239,5 +239,24 @@ namespace Yathzee
             smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
             Assert.AreEqual(0, smallStraight[ScoreTypeLower.SmallStraight]);
         }
+
+        [TestMethod]
+        public void LargeStraightTest()
+        {
+            LowerScoreSection lowerSection = new LowerScoreSection();
+            Dictionary<ScoreTypeLower, int> largeStraight = new Dictionary<ScoreTypeLower, int>();
+
+            Die[] dice = new Die[5] { new Die(1), new Die(2), new Die(3), new Die(4), new Die(5) };
+            largeStraight = lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            Assert.AreEqual(40, largeStraight[ScoreTypeLower.LargeStraight]);
+
+            dice = new Die[5] { new Die(6), new Die(2), new Die(3), new Die(4), new Die(5) };
+            largeStraight = lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            Assert.AreEqual(40, largeStraight[ScoreTypeLower.LargeStraight]);
+
+            dice = new Die[5] { new Die(1), new Die(2), new Die(4), new Die(4), new Die(5) };
+            largeStraight = lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            Assert.AreEqual(0, largeStraight[ScoreTypeLower.LargeStraight]);
+        }
     }
 }
