@@ -115,7 +115,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 485);
+            this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 30);
             this.button1.TabIndex = 1;
@@ -135,7 +135,7 @@
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(455, 92);
             this.groupBox1.TabIndex = 2;
@@ -262,7 +262,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.checkBox6);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 110);
+            this.groupBox2.Location = new System.Drawing.Point(12, 146);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(455, 181);
             this.groupBox2.TabIndex = 3;
@@ -504,7 +504,7 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.checkBox12);
             this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Location = new System.Drawing.Point(12, 297);
+            this.groupBox3.Location = new System.Drawing.Point(12, 333);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(455, 182);
             this.groupBox3.TabIndex = 4;
@@ -739,7 +739,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(158, 492);
+            this.label33.Location = new System.Drawing.Point(158, 19);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(86, 17);
             this.label33.TabIndex = 41;
@@ -748,7 +748,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(250, 492);
+            this.label34.Location = new System.Drawing.Point(250, 19);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(16, 17);
             this.label34.TabIndex = 41;
@@ -757,7 +757,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(297, 492);
+            this.label35.Location = new System.Drawing.Point(297, 19);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(105, 17);
             this.label35.TabIndex = 42;
@@ -766,7 +766,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(413, 492);
+            this.label36.Location = new System.Drawing.Point(413, 19);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(16, 17);
             this.label36.TabIndex = 43;
@@ -778,13 +778,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(479, 527);
             this.Controls.Add(this.label36);
-            this.Controls.Add(this.label35);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.label33);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.label35);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.label33);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";

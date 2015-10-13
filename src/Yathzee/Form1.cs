@@ -31,12 +31,19 @@ namespace Yathzee
         Die[] dice = new Die[5];
 
         int rollRemain = 3;
+        CheckBox[] holds;
+        CheckBox[] upperCheckBoxes;
+        CheckBox[] lowerCheckBoxes;
+
 
         public Form1()
         {
             InitializeComponent();
             upperScores = upperSection.getScores();
             lowerScores = lowerSection.getScores();
+            holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
+            upperCheckBoxes = new CheckBox[] { checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11 };
+            lowerCheckBoxes = new CheckBox[] { checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18 };
         }
 
 
@@ -53,12 +60,10 @@ namespace Yathzee
             PictureBox[] pictureBoxes = new PictureBox[5] { pictureBox1, pictureBox2, pictureBox3,
                 pictureBox4, pictureBox5 };
 
-            CheckBox[] check = new CheckBox[5] { checkBox1, checkBox2, checkBox3, 
-                checkBox4, checkBox5 };
             DiceGenerator generator = new DiceGenerator();
             for (int i = 0; i < dice.Length; i++)
             {
-                if (!check[i].Checked)
+                if (!holds[i].Checked)
                 {
                     dice[i] = generator.generateDice();
                     pictureBoxes[i].Image = dice[i].getDieImage();
@@ -77,11 +82,17 @@ namespace Yathzee
         private void newRoll()
         {
             setAllEnabled(false);
-            rollRemain = 3;
-            label36.Text = rollRemain.ToString();
-            button1.Enabled = true;
+            if (areAllCheckBoxesChecked())
+            {
+                rollRemain = 0;
+            }
+            else
+            { 
+                rollRemain = 3;
+                button1.Enabled = true;
+            }
 
-            CheckBox[] holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
+            label36.Text = rollRemain.ToString();        
 
             for (int i = 0; i < holds.Length; i++)
             {
@@ -92,16 +103,25 @@ namespace Yathzee
 
         private bool areAllCheckBoxesChecked()
         {
-            return checkBox1.Checked && checkBox2.Checked && checkBox3.Checked && checkBox4.Checked &&
-                checkBox5.Checked && checkBox6.Checked && checkBox7.Checked && checkBox8.Checked &&
-                checkBox9.Checked && checkBox10.Checked && checkBox11.Checked && checkBox12.Checked &&
-                checkBox13.Checked && checkBox14.Checked && checkBox15.Checked && checkBox16.Checked &&
-                checkBox17.Checked && checkBox18.Checked;
+            for (int i = 0; i < upperCheckBoxes.Length; i++)
+            {
+                if (!upperCheckBoxes[i].Checked)
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < lowerCheckBoxes.Length; i++)
+            {
+                if (!lowerCheckBoxes[i].Checked)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void setButtonAndHoldsEnabled(bool isEnabled)
         {
-            CheckBox[] holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
             button1.Enabled = isEnabled;
 
             for (int i = 0; i < holds.Length; i++)
@@ -112,10 +132,7 @@ namespace Yathzee
 
         private void setAllEnabled(bool isEnabled)
         {
-            CheckBox[] upperSection = new CheckBox[] { checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11 };
-            CheckBox[] lowerSection = new CheckBox[] { checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18 };
-
-            if (rollRemain == 0 || areAllCheckBoxesChecked())
+            if (rollRemain == 0)
             {
                 setButtonAndHoldsEnabled(false);
             }
@@ -124,27 +141,27 @@ namespace Yathzee
                 setButtonAndHoldsEnabled(isEnabled);
             }
 
-            for (int i = 0; i < upperSection.Length; i++)
+            for (int i = 0; i < upperCheckBoxes.Length; i++)
             {
-                if (upperSection[i].Checked)
+                if (upperCheckBoxes[i].Checked)
                 {
-                    upperSection[i].Enabled = false;
+                    upperCheckBoxes[i].Enabled = false;
                 }
                 else
                 {
-                    upperSection[i].Enabled = isEnabled;
+                    upperCheckBoxes[i].Enabled = isEnabled;
                 }
             }
 
-            for (int i = 0; i < lowerSection.Length; i++)
+            for (int i = 0; i < lowerCheckBoxes.Length; i++)
             {
-                if (lowerSection[i].Checked)
+                if (lowerCheckBoxes[i].Checked)
                 {
-                    lowerSection[i].Enabled = false;
+                    lowerCheckBoxes[i].Enabled = false;
                 }
                 else
                 {
-                    lowerSection[i].Enabled = isEnabled;
+                    lowerCheckBoxes[i].Enabled = isEnabled;
                 }
             }
         }
