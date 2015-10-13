@@ -22,11 +22,11 @@ namespace Yathzee
 
     public partial class Form1 : Form
     {
-        Dictionary<ScoreTypeUpper, int> upperScores = new Dictionary<ScoreTypeUpper, int>();
         UpperScoreSection upperSection = new UpperScoreSection();
+        Dictionary<ScoreTypeUpper, int> upperScores = new Dictionary<ScoreTypeUpper, int>();
 
-        Dictionary<ScoreTypeLower, int> lowerScores = new Dictionary<ScoreTypeLower, int>();
         LowerScoreSection lowerSection = new LowerScoreSection();
+        Dictionary<ScoreTypeLower, int> lowerScores = new Dictionary<ScoreTypeLower, int>();
 
         Die[] dice = new Die[5];
 
@@ -35,6 +35,8 @@ namespace Yathzee
         public Form1()
         {
             InitializeComponent();
+            upperScores = upperSection.getScores();
+            lowerScores = lowerSection.getScores();
         }
 
 
@@ -85,33 +87,34 @@ namespace Yathzee
             {
                 holds[i].Checked = false;
             }
+            label34.Text = (upperScores[ScoreTypeUpper.Total] + lowerScores[ScoreTypeLower.Total]).ToString();
+        }
 
+        private void setButtonAndHoldsEnabled(bool isEnabled)
+        {
+            CheckBox[] holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
+            button1.Enabled = isEnabled;
+
+            for (int i = 0; i < holds.Length; i++)
+            {
+                holds[i].Enabled = isEnabled;
+            }
         }
 
         private void setAllEnabled(bool isEnabled)
         {
-            CheckBox[] holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
             CheckBox[] upperSection = new CheckBox[] { checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11 };
             CheckBox[] lowerSection = new CheckBox[] { checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18 };
 
             if (rollRemain == 0)
             {
-                 button1.Enabled = false;
-
-                for (int i = 0; i < holds.Length; i++)
-                {
-                    holds[i].Enabled = false;
-                }
+                setButtonAndHoldsEnabled(false);
             }
             else
             {
-                button1.Enabled = isEnabled;
-
-                for (int i = 0; i < holds.Length; i++)
-                {
-                    holds[i].Enabled = isEnabled;
-                }
+                setButtonAndHoldsEnabled(isEnabled);
             }
+
             for (int i = 0; i < upperSection.Length; i++)
             {
                 if (upperSection[i].Checked)
@@ -180,14 +183,13 @@ namespace Yathzee
                     break;
             }
 
-            upperScores = upperSection.checkScore(dice, checkedValue);
+            upperSection.checkScore(dice, checkedValue);
 
             currentLabel.Text = upperScores[scoreType].ToString();
             label14.Text = upperScores[ScoreTypeUpper.Bonus].ToString();
 
             label16.Text = upperScores[ScoreTypeUpper.Total].ToString();
 
-            label34.Text = (upperScores[ScoreTypeUpper.Total] + lowerScores[ScoreTypeLower.Total]).ToString();
 
             newRoll();
         }

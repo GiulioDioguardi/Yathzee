@@ -30,7 +30,12 @@ namespace Yathzee
             scoreValues.Add(ScoreTypeLower.Total, getTotal());
         }
 
-        public Dictionary<ScoreTypeLower, int> checkScore(Die[] dice, ScoreTypeLower scoreType)
+        public Dictionary<ScoreTypeLower, int> getScores()
+        {
+            return scoreValues;
+        }
+
+        public void checkScore(Die[] dice, ScoreTypeLower scoreType)
         {
             int[] diceValues = new int[5];
             for (int i = 0; i < dice.Length; i++)
@@ -76,7 +81,6 @@ namespace Yathzee
 
             setTotal(sumTotal());
             scoreValues[ScoreTypeLower.Total] = getTotal();
-            return scoreValues;
         }
 
         private int sumValues(int[] values)

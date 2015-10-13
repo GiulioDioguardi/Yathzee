@@ -50,11 +50,14 @@ namespace Yathzee
             UpperScoreSection upperSection = new UpperScoreSection();
             Die[] dice = new Die[5] { new Die(3), new Die(1), new Die(1), new Die(4), new Die(6) };
             Dictionary<ScoreTypeUpper, int> upper = new Dictionary<ScoreTypeUpper, int>();
-            upper = upperSection.checkScore(dice, 1);
+            upperSection.checkScore(dice, 1);
+            upper = upperSection.getScores();
             Assert.AreEqual(2, upper[ScoreTypeUpper.One], "Error in ones");
-            upper = upperSection.checkScore(dice, 3);
+            upperSection.checkScore(dice, 3);
+            upper = upperSection.getScores();
             Assert.AreEqual(3, upper[ScoreTypeUpper.Three], "Error in threes");
-            upper = upperSection.checkScore(dice, 4);
+            upperSection.checkScore(dice, 4);
+            upper = upperSection.getScores();
             Assert.AreEqual(4, upper[ScoreTypeUpper.Four], "Error in fours");
         }
 
@@ -64,7 +67,8 @@ namespace Yathzee
             UpperScoreSection upperSection = new UpperScoreSection();
             Die[] dice = new Die[5] { new Die(5), new Die(2), new Die(3), new Die(6), new Die(6) };
             Dictionary<ScoreTypeUpper, int> upper = new Dictionary<ScoreTypeUpper, int>();
-            upper = upperSection.checkScore(dice, 1);
+            upperSection.checkScore(dice, 1);
+            upper = upperSection.getScores();
             Assert.AreEqual(0, upper[ScoreTypeUpper.One], "Error in ones, zero score expected");
         }
 
@@ -74,10 +78,12 @@ namespace Yathzee
             UpperScoreSection upperSection = new UpperScoreSection();
             Dictionary<ScoreTypeUpper, int> scoreValues = new Dictionary<ScoreTypeUpper, int>();
             Die[] dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(2), new Die(4) };
-            scoreValues = upperSection.checkScore(dice, 6);
+            upperSection.checkScore(dice, 6);
+            scoreValues = upperSection.getScores();
             Assert.AreEqual(18, scoreValues[ScoreTypeUpper.Total]);
             dice = new Die[5] { new Die(6), new Die(6), new Die(2), new Die(2), new Die(4) };
-            scoreValues = upperSection.checkScore(dice, 2);
+            upperSection.checkScore(dice, 2);
+            scoreValues = upperSection.getScores();
             Assert.AreEqual(22, scoreValues[ScoreTypeUpper.Total]);
         }
         [TestMethod]
@@ -87,28 +93,34 @@ namespace Yathzee
             Dictionary<ScoreTypeUpper, int> upperBonusEarned = new Dictionary<ScoreTypeUpper, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(4) };
-            upperBonusEarned = upperSection.checkScore(dice, 1);
+            upperSection.checkScore(dice, 1);
+            upperBonusEarned = upperSection.getScores();
             Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(2), new Die(6), new Die(2), new Die(2), new Die(4) };
-            upperBonusEarned = upperSection.checkScore(dice, 2);
+            upperSection.checkScore(dice, 2);
+            upperBonusEarned = upperSection.getScores();
             Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(3), new Die(3), new Die(6), new Die(3), new Die(4) };
-            upperBonusEarned = upperSection.checkScore(dice, 3);
+            upperSection.checkScore(dice, 3);
+            upperBonusEarned = upperSection.getScores();
             Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(4), new Die(5), new Die(4), new Die(2), new Die(4) };
-            upperBonusEarned = upperSection.checkScore(dice, 4);
+            upperSection.checkScore(dice, 4);
+            upperBonusEarned = upperSection.getScores();
             Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(5), new Die(5) };
-            upperBonusEarned = upperSection.checkScore(dice, 5);
+            upperSection.checkScore(dice, 5);
+            upperBonusEarned = upperSection.getScores();
             Assert.AreEqual(0, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
 
             Assert.AreEqual(45, upperBonusEarned[ScoreTypeUpper.Total], "Bonus is not given when it should");
             dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(2), new Die(4) };
-            upperBonusEarned = upperSection.checkScore(dice, 6);
+            upperSection.checkScore(dice, 6);
+            upperBonusEarned = upperSection.getScores();
 
             Assert.AreEqual(35, upperBonusEarned[ScoreTypeUpper.Bonus], "Bonus is not given when it should");
         }
@@ -120,27 +132,33 @@ namespace Yathzee
             Dictionary<ScoreTypeUpper, int> upperBonusNotEarned = new Dictionary<ScoreTypeUpper, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(2), new Die(1), new Die(2), new Die(4) };
-            upperBonusNotEarned = upperSection.checkScore(dice, 1);
+            upperSection.checkScore(dice, 1);
+            upperBonusNotEarned = upperSection.getScores();
             Assert.AreEqual(2, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(2), new Die(6), new Die(1), new Die(2), new Die(4) };
-            upperBonusNotEarned = upperSection.checkScore(dice, 2);
+            upperSection.checkScore(dice, 2);
+            upperBonusNotEarned = upperSection.getScores();
             Assert.AreEqual(6, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(3), new Die(4), new Die(6), new Die(3), new Die(4) };
-            upperBonusNotEarned = upperSection.checkScore(dice, 3);
+            upperSection.checkScore(dice, 3);
+            upperBonusNotEarned = upperSection.getScores();
             Assert.AreEqual(12, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(4), new Die(5), new Die(4), new Die(2), new Die(4) };
-            upperBonusNotEarned = upperSection.checkScore(dice, 4);
+            upperSection.checkScore(dice, 4);
+            upperBonusNotEarned = upperSection.getScores();
             Assert.AreEqual(24, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(5), new Die(5) };
-            upperBonusNotEarned = upperSection.checkScore(dice, 5);
+            upperSection.checkScore(dice, 5);
+            upperBonusNotEarned = upperSection.getScores();
             Assert.AreEqual(39, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(2), new Die(4) };
-            upperBonusNotEarned = upperSection.checkScore(dice, 6);
+            upperSection.checkScore(dice, 6);
+            upperBonusNotEarned = upperSection.getScores();
             Assert.AreEqual(51, upperBonusNotEarned[ScoreTypeUpper.Total], "Bonus is given when it shouldn't");
             Assert.AreEqual(0, upperBonusNotEarned[ScoreTypeUpper.Bonus], "Bonus is given when it shouldn't");
         }
@@ -155,19 +173,23 @@ namespace Yathzee
             Dictionary<ScoreTypeLower, int> threeOfKind = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(4) };
-            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            threeOfKind = lowerSection.getScores();
             Assert.AreEqual(9, threeOfKind[ScoreTypeLower.ThreeOfKind]);
 
             dice = new Die[5] { new Die(4), new Die(2), new Die(1), new Die(2), new Die(2) };
-            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            threeOfKind = lowerSection.getScores();
             Assert.AreEqual(11, threeOfKind[ScoreTypeLower.ThreeOfKind]);
 
             dice = new Die[5] { new Die(6), new Die(5), new Die(6), new Die(6), new Die(2) };
-            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            threeOfKind = lowerSection.getScores();
             Assert.AreEqual(25, threeOfKind[ScoreTypeLower.ThreeOfKind]);
 
             dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
-            threeOfKind = lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.ThreeOfKind);
+            threeOfKind = lowerSection.getScores();
             Assert.AreEqual(0, threeOfKind[ScoreTypeLower.ThreeOfKind]);
         }
 
@@ -178,15 +200,18 @@ namespace Yathzee
             Dictionary<ScoreTypeLower, int> fourOfKind = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(1), new Die(4) };
-            fourOfKind = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            fourOfKind = lowerSection.getScores();
             Assert.AreEqual(8, fourOfKind[ScoreTypeLower.FourOfKind]);
 
             dice = new Die[5] { new Die(3), new Die(4), new Die(4), new Die(4), new Die(4) };
-            fourOfKind = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            fourOfKind = lowerSection.getScores();
             Assert.AreEqual(19, fourOfKind[ScoreTypeLower.FourOfKind]);
 
             dice = new Die[5] { new Die(1), new Die(3), new Die(1), new Die(2), new Die(4) };
-            fourOfKind = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            fourOfKind = lowerSection.getScores();
             Assert.AreEqual(0, fourOfKind[ScoreTypeLower.FourOfKind]);
         }
         [TestMethod]
@@ -196,15 +221,18 @@ namespace Yathzee
             Dictionary<ScoreTypeLower, int> fullHouse = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(1), new Die(1), new Die(2), new Die(2) };
-            fullHouse = lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            fullHouse = lowerSection.getScores();
             Assert.AreEqual(25, fullHouse[ScoreTypeLower.FullHouse]);
 
             dice = new Die[5] { new Die(3), new Die(3), new Die(3), new Die(2), new Die(2) };
-            fullHouse = lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            fullHouse = lowerSection.getScores();
             Assert.AreEqual(25, fullHouse[ScoreTypeLower.FullHouse]);
 
             dice = new Die[5] { new Die(1), new Die(5), new Die(1), new Die(4), new Die(2) };
-            fullHouse = lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            lowerSection.checkScore(dice, ScoreTypeLower.FullHouse);
+            fullHouse = lowerSection.getScores();
             Assert.AreEqual(0, fullHouse[ScoreTypeLower.FullHouse]);
         }
 
@@ -215,27 +243,33 @@ namespace Yathzee
             Dictionary<ScoreTypeLower, int> smallStraight = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(2), new Die(3), new Die(4), new Die(6) };
-            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            smallStraight = lowerSection.getScores();
             Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
 
             dice = new Die[5] { new Die(2), new Die(3), new Die(4), new Die(4), new Die(5) };
-            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            smallStraight = lowerSection.getScores();
             Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
 
             dice = new Die[5] { new Die(1), new Die(2), new Die(2), new Die(3), new Die(4) };
-            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            smallStraight = lowerSection.getScores();
             Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
 
             dice = new Die[5] { new Die(2), new Die(2), new Die(3), new Die(4), new Die(5) };
-            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            smallStraight = lowerSection.getScores();
             Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
 
             dice = new Die[5] { new Die(1), new Die(2), new Die(3), new Die(4), new Die(5) };
-            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            smallStraight = lowerSection.getScores();
             Assert.AreEqual(30, smallStraight[ScoreTypeLower.SmallStraight]);
 
             dice = new Die[5] { new Die(1), new Die(1), new Die(3), new Die(4), new Die(6) };
-            smallStraight = lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.SmallStraight);
+            smallStraight = lowerSection.getScores();
             Assert.AreEqual(0, smallStraight[ScoreTypeLower.SmallStraight]);
         }
 
@@ -246,15 +280,18 @@ namespace Yathzee
             Dictionary<ScoreTypeLower, int> largeStraight = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(1), new Die(2), new Die(3), new Die(4), new Die(5) };
-            largeStraight = lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            largeStraight = lowerSection.getScores();
             Assert.AreEqual(40, largeStraight[ScoreTypeLower.LargeStraight]);
 
             dice = new Die[5] { new Die(6), new Die(2), new Die(3), new Die(4), new Die(5) };
-            largeStraight = lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            largeStraight = lowerSection.getScores();
             Assert.AreEqual(40, largeStraight[ScoreTypeLower.LargeStraight]);
 
             dice = new Die[5] { new Die(1), new Die(2), new Die(4), new Die(4), new Die(5) };
-            largeStraight = lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            lowerSection.checkScore(dice, ScoreTypeLower.LargeStraight);
+            largeStraight = lowerSection.getScores();
             Assert.AreEqual(0, largeStraight[ScoreTypeLower.LargeStraight]);
         }
 
@@ -265,11 +302,13 @@ namespace Yathzee
             Dictionary<ScoreTypeLower, int> yathzee = new Dictionary<ScoreTypeLower, int>();
 
             Die[] dice = new Die[5] { new Die(2), new Die(2), new Die(2), new Die(2), new Die(2) };
-            yathzee = lowerSection.checkScore(dice, ScoreTypeLower.Yathzee);
+            lowerSection.checkScore(dice, ScoreTypeLower.Yathzee);
+            yathzee = lowerSection.getScores();
             Assert.AreEqual(50, yathzee[ScoreTypeLower.Yathzee]);
 
             dice = new Die[5] { new Die(2), new Die(3), new Die(2), new Die(2), new Die(2) };
-            yathzee = lowerSection.checkScore(dice, ScoreTypeLower.Yathzee);
+            lowerSection.checkScore(dice, ScoreTypeLower.Yathzee);
+            yathzee = lowerSection.getScores();
             Assert.AreEqual(0, yathzee[ScoreTypeLower.Yathzee]);
         }
 
@@ -280,11 +319,13 @@ namespace Yathzee
             Dictionary<ScoreTypeLower, int> scoreValues = new Dictionary<ScoreTypeLower, int>();
             Die[] dice = new Die[5] { new Die(6), new Die(3), new Die(6), new Die(2), new Die(4) };
 
-            scoreValues = lowerSection.checkScore(dice, ScoreTypeLower.Chance);
+            lowerSection.checkScore(dice, ScoreTypeLower.Chance);
+            scoreValues = lowerSection.getScores();
             Assert.AreEqual(21, scoreValues[ScoreTypeLower.Total]);
 
             dice = new Die[5] { new Die(6), new Die(6), new Die(6), new Die(6), new Die(4) };
-            scoreValues = lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            lowerSection.checkScore(dice, ScoreTypeLower.FourOfKind);
+            scoreValues = lowerSection.getScores();
             Assert.AreEqual(49, scoreValues[ScoreTypeLower.Total]);
         }
 
