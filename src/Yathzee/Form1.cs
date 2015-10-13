@@ -90,6 +90,15 @@ namespace Yathzee
             label34.Text = (upperScores[ScoreTypeUpper.Total] + lowerScores[ScoreTypeLower.Total]).ToString();
         }
 
+        private bool areAllCheckBoxesChecked()
+        {
+            return checkBox1.Checked && checkBox2.Checked && checkBox3.Checked && checkBox4.Checked &&
+                checkBox5.Checked && checkBox6.Checked && checkBox7.Checked && checkBox8.Checked &&
+                checkBox9.Checked && checkBox10.Checked && checkBox11.Checked && checkBox12.Checked &&
+                checkBox13.Checked && checkBox14.Checked && checkBox15.Checked && checkBox16.Checked &&
+                checkBox17.Checked && checkBox18.Checked;
+        }
+
         private void setButtonAndHoldsEnabled(bool isEnabled)
         {
             CheckBox[] holds = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5 };
@@ -106,7 +115,7 @@ namespace Yathzee
             CheckBox[] upperSection = new CheckBox[] { checkBox6, checkBox7, checkBox8, checkBox9, checkBox10, checkBox11 };
             CheckBox[] lowerSection = new CheckBox[] { checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17, checkBox18 };
 
-            if (rollRemain == 0)
+            if (rollRemain == 0 || areAllCheckBoxesChecked())
             {
                 setButtonAndHoldsEnabled(false);
             }
@@ -190,12 +199,58 @@ namespace Yathzee
 
             label16.Text = upperScores[ScoreTypeUpper.Total].ToString();
 
-
             newRoll();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            newRoll();
+        }
+
+        private void checkBoxLowerSection_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox currentCheckBox = (CheckBox)sender;
+            Label currentLabel = null;
+            ScoreTypeLower scoreType = ScoreTypeLower.Total;
+            switch (currentCheckBox.Name)
+            {
+                case "checkBox12":
+                    scoreType = ScoreTypeLower.ThreeOfKind;
+                    currentLabel = label18;
+                    break;
+                case "checkBox13":
+                    scoreType = ScoreTypeLower.FourOfKind;
+                    currentLabel = label20;
+                    break;
+                case "checkBox14":
+                    scoreType = ScoreTypeLower.FullHouse;
+                    currentLabel = label22;
+                    break;
+                case "checkBox15":
+                    scoreType = ScoreTypeLower.SmallStraight;
+                    currentLabel = label24;
+                    break;
+                case "checkBox16":
+                    scoreType = ScoreTypeLower.LargeStraight;
+                    currentLabel = label26;
+                    break;
+                case "checkBox17":
+                    scoreType = ScoreTypeLower.Yathzee;
+                    currentLabel = label28;
+                    break;
+                case "checkBox18":
+                    scoreType = ScoreTypeLower.Chance;
+                    currentLabel = label30;
+                    break;
+                default:
+                    break;
+            }
+            lowerSection.checkScore(dice, scoreType);
+
+            currentLabel.Text = lowerScores[scoreType].ToString();
+
+            label32.Text = lowerScores[ScoreTypeLower.Total].ToString();
+
             newRoll();
         }
     }
