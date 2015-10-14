@@ -99,7 +99,7 @@ namespace Yathzee
             }
         }
 
-        private bool areAllSet()
+        public bool areAllSet()
         {
             if (oneIsSet && twoIsSet && threeIsSet && fourIsSet && fiveIsSet && sixIsSet)
             {
