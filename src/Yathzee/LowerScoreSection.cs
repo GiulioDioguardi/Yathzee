@@ -9,9 +9,6 @@ namespace Yathzee
     public class LowerScoreSection : ScoreSection
     {
         private Dictionary<ScoreTypeLower, int> scoreValues = new Dictionary<ScoreTypeLower, int>();
-        private bool threeOfKindIsSet = false, fourOfKindIsSet = false, fullHouseIsSet = false,
-            smallStraightIsSet = false, largeStraightIsSet = false, yathzeeIsSet = false,
-            chanceIsSet = false;
 
         public LowerScoreSection()
         {
@@ -49,31 +46,24 @@ namespace Yathzee
             {
                 case ScoreTypeLower.ThreeOfKind:
                     scoreValues[ScoreTypeLower.ThreeOfKind] = checkForThreeOfKind(diceValues);
-                    threeOfKindIsSet = true;
                     break;
                 case ScoreTypeLower.FourOfKind:
                     scoreValues[scoreType] = checkForFourOfKind(diceValues);
-                    fourOfKindIsSet = true;
                     break;
                 case ScoreTypeLower.FullHouse:
                     scoreValues[scoreType] = checkForFullHouse(diceValues);
-                    fullHouseIsSet = true;
                     break;
                 case ScoreTypeLower.SmallStraight:
                     scoreValues[scoreType] = checkForSmallStraight(diceValues);
-                    smallStraightIsSet = true;
                     break;
                 case ScoreTypeLower.LargeStraight:
                     scoreValues[scoreType] = checkForLargeStraight(diceValues);
-                    largeStraightIsSet = true;
                     break;
                 case ScoreTypeLower.Yathzee:
                     scoreValues[scoreType] = checkForYathzee(diceValues);
-                    yathzeeIsSet = true;
                     break;
                 case ScoreTypeLower.Chance:
                     scoreValues[scoreType] = checkForChance(diceValues);
-                    chanceIsSet = true;
                     break;
                 default:
                     break;

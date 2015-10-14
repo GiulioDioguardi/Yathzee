@@ -69,12 +69,10 @@ namespace Yathzee
             rollRemain = 3;
 
             upperSection = new UpperScoreSection();
-            upperScores = new Dictionary<ScoreTypeUpper, int>();
             upperScores = upperSection.getScores();
             label16.Text = upperScores[ScoreTypeUpper.Total].ToString();
 
             lowerSection = new LowerScoreSection();
-            lowerScores = new Dictionary<ScoreTypeLower, int>();
             lowerScores = lowerSection.getScores();
             label32.Text = lowerScores[ScoreTypeLower.Total].ToString();
 
@@ -238,13 +236,12 @@ namespace Yathzee
                 currentLabel.Text = upperScores[scoreType].ToString();
                 currentLabel.Visible = true;
 
-                if(upperSection.areAllSet())
+                if (upperSection.areAllSet())
                 {
                     label13.Visible = true;
                     label14.Visible = true;
+                    label14.Text = upperScores[ScoreTypeUpper.Bonus].ToString();
                 }
-
-                label14.Text = upperScores[ScoreTypeUpper.Bonus].ToString();
 
                 label16.Text = upperScores[ScoreTypeUpper.Total].ToString();
 
