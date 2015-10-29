@@ -19,7 +19,7 @@ namespace Yathzee
 
         public void setTotal(int value)
         {
-            total = value;
+            this.total = value;
         }
 
         private bool areAllSet()
