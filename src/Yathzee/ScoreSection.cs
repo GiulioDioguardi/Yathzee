@@ -8,23 +8,8 @@ namespace Yathzee
 {
     public abstract class ScoreSection
     {
-        private int total;
+        public int Total { get; set; }
         public ScoreSection()
         { }
-
-        public int getTotal()
-        {
-            return total;
-        }
-
-        public void setTotal(int value)
-        {
-            this.total = value;
-        }
-
-        private bool areAllSet()
-        {
-            return false;
-        }
     }
 }

@@ -105,7 +105,7 @@ namespace Yathzee
                 if (!holds[i].Checked)
                 {
                     dice[i] = generator.generateDice();
-                    pictureBoxes[i].Image = dice[i].getDieImage();
+                    pictureBoxes[i].Image = dice[i].Image;
                     //check[i].Text = dice[i].getDieValue().ToString();
                 }
             }

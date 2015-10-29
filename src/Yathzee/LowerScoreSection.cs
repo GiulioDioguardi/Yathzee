@@ -24,7 +24,7 @@ namespace Yathzee
             scoreValues.Add(ScoreTypeLower.LargeStraight, 0);
             scoreValues.Add(ScoreTypeLower.Yathzee, 0);
             scoreValues.Add(ScoreTypeLower.Chance, 0);
-            scoreValues.Add(ScoreTypeLower.Total, getTotal());
+            scoreValues.Add(ScoreTypeLower.Total, Total);
         }
 
         public Dictionary<ScoreTypeLower, int> getScores()
@@ -37,7 +37,7 @@ namespace Yathzee
             int[] diceValues = new int[5];
             for (int i = 0; i < dice.Length; i++)
             {
-                diceValues[i] = dice[i].getDieValue();
+                diceValues[i] = dice[i].Value;
             }
 
             Array.Sort(diceValues);
@@ -69,8 +69,8 @@ namespace Yathzee
                     break;
             }
 
-            setTotal(sumTotal());
-            scoreValues[ScoreTypeLower.Total] = getTotal();
+            Total = sumTotal();
+            scoreValues[ScoreTypeLower.Total] = Total;
         }
 
         private int sumValues(int[] values)

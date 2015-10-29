@@ -25,7 +25,7 @@ namespace Yathzee
             scoreValues.Add(ScoreTypeUpper.Five, 0);
             scoreValues.Add(ScoreTypeUpper.Six, 0);
             scoreValues.Add(ScoreTypeUpper.Bonus, 0);
-            scoreValues.Add(ScoreTypeUpper.Total, getTotal());
+            scoreValues.Add(ScoreTypeUpper.Total, Total);
         }
 
         public Dictionary<ScoreTypeUpper, int> getScores()
@@ -38,7 +38,7 @@ namespace Yathzee
             int[] diceValues = new int[5];
             for (int i = 0; i < dice.Length; i++)
             {
-                diceValues[i] = dice[i].getDieValue();
+                diceValues[i] = dice[i].Value;
             }
             switch (checkedValue)
             {
@@ -79,8 +79,8 @@ namespace Yathzee
                 }
             }
 
-            setTotal(sumTotal());
-            scoreValues[ScoreTypeUpper.Total] = getTotal();
+            Total = sumTotal();
+            scoreValues[ScoreTypeUpper.Total] = Total;
         }
 
         private bool isBonusEarned()

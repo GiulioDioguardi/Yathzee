@@ -14,7 +14,7 @@ namespace Yathzee
             for (int i = 0; i < 6; i++)
             {
                 Die die = new Die(i);
-                Assert.AreEqual(i, die.getDieValue());
+                Assert.AreEqual(i, die.Value);
             }
         }
 
@@ -35,8 +35,8 @@ namespace Yathzee
             for (int i = 0; i < 100; i++)
             {
                 Die die = generator.generateDice();
-                Assert.IsTrue(die.getDieValue() <= 6, "Die shows a value too high.");
-                Assert.IsTrue(die.getDieValue() > 0, "Die shows a value too low.");
+                Assert.IsTrue(die.Value <= 6, "Die shows a value too high.");
+                Assert.IsTrue(die.Value > 0, "Die shows a value too low.");
             }
         }
     }
