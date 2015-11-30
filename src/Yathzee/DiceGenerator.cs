@@ -9,7 +9,11 @@ namespace Yathzee
 {
     public class DiceGenerator
     {
-        Random rnd = new Random();
+        Random rnd;
+        public DiceGenerator()
+        {
+            rnd = new Random();
+        }
         public Die generateDice()
         {    
             int value = rnd.Next(6) + 1;

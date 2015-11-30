@@ -8,12 +8,11 @@ namespace Yathzee
 {
     public class Die
     {
-        DieImage image = new DieImage();
-        public int Value { get; private set; }
-        public System.Drawing.Image Image { get; private set; }
+        System.Drawing.Image dieImage;
+        int dieValue;
 
-        public Die()
-        { }
+        public int Value { get { return dieValue; } private set { dieValue = value; } }
+        public System.Drawing.Image Image { get { return dieImage; } private set { dieImage = value; } }
 
         public Die(int value)
         {
@@ -22,6 +21,7 @@ namespace Yathzee
 
         public void setDie(int value)
         {
+            DieImage image = new DieImage();
             Value = value;
             switch (value)
             {

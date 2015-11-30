@@ -8,6 +8,7 @@ namespace Yathzee
 {
     public class LowerScoreSection : ScoreSection
     {
+
         private Dictionary<ScoreTypeLower, int> scoreValues = new Dictionary<ScoreTypeLower, int>();
 
         public LowerScoreSection()
@@ -45,7 +46,7 @@ namespace Yathzee
             switch (scoreType)
             {
                 case ScoreTypeLower.ThreeOfKind:
-                    scoreValues[ScoreTypeLower.ThreeOfKind] = checkForThreeOfKind(diceValues);
+                    scoreValues[scoreType] = checkForThreeOfKind(diceValues);
                     break;
                 case ScoreTypeLower.FourOfKind:
                     scoreValues[scoreType] = checkForFourOfKind(diceValues);

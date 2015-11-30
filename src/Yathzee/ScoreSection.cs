@@ -8,8 +8,7 @@ namespace Yathzee
 {
     public abstract class ScoreSection
     {
-        public int Total { get; set; }
-        public ScoreSection()
-        { }
+        private int total;
+        public int Total { get { return total; } set { total = value; } }
     }
 }

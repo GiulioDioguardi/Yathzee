@@ -8,6 +8,7 @@ namespace Yathzee
 {
     public class UpperScoreSection : ScoreSection
     {
+
         private Dictionary<ScoreTypeUpper, int> scoreValues = new Dictionary<ScoreTypeUpper, int>();
         private bool oneIsSet = false, twoIsSet = false, threeIsSet = false,
             fourIsSet = false, fiveIsSet = false, sixIsSet = false;
@@ -79,24 +80,19 @@ namespace Yathzee
                 }
             }
 
-            Total = sumTotal();
+            Total = sumTotal(true);
             scoreValues[ScoreTypeUpper.Total] = Total;
         }
 
         private bool isBonusEarned()
         {
-            int sum = scoreValues[ScoreTypeUpper.One] + scoreValues[ScoreTypeUpper.Two] +
-                scoreValues[ScoreTypeUpper.Three] + scoreValues[ScoreTypeUpper.Four] +
-                scoreValues[ScoreTypeUpper.Five] + scoreValues[ScoreTypeUpper.Six];
+            int sum = sumTotal(false);
 
             if (sum >= 63)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public bool areAllSet()
@@ -105,18 +101,19 @@ namespace Yathzee
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
-        private int sumTotal()
+        private int sumTotal(bool includeBonus)
         {
-            return scoreValues[ScoreTypeUpper.One] + scoreValues[ScoreTypeUpper.Two] +
+            int sum = scoreValues[ScoreTypeUpper.One] + scoreValues[ScoreTypeUpper.Two] +
                 scoreValues[ScoreTypeUpper.Three] + scoreValues[ScoreTypeUpper.Four] +
-                scoreValues[ScoreTypeUpper.Five] + scoreValues[ScoreTypeUpper.Six] +
-                scoreValues[ScoreTypeUpper.Bonus];
+                scoreValues[ScoreTypeUpper.Five] + scoreValues[ScoreTypeUpper.Six];
+            if (includeBonus)
+            {
+                sum += scoreValues[ScoreTypeUpper.Bonus];
+            }
+            return sum;
         }
 
         private int sumScore(int[] diceValues, int dieValue)

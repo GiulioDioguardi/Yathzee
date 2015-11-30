@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Yathzee
 {
-    public enum ScoreTypeUpper
+    public enum ScoreTypeUpper : byte
     {
         One, Two, Three, Four, Five, Six, Bonus, Total
     };
-    public enum ScoreTypeLower
+
+    public enum ScoreTypeLower : byte
     {
         ThreeOfKind, FourOfKind, FullHouse, SmallStraight, LargeStraight,
         Yathzee, Chance, Total

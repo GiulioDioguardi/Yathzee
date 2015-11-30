@@ -164,7 +164,7 @@ namespace Yathzee
         }
     }
     [TestClass]
-    public class LowerBoundScoreSectionTest
+    public class LowerScoreSectionTest
     {
         [TestMethod]
         public void ThreeOfKindTest()
