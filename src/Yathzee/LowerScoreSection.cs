@@ -182,8 +182,10 @@ namespace Yathzee
 
         private int sumTotal()
         {
-            return scoreValues[ScoreTypeLower.ThreeOfKind] + scoreValues[ScoreTypeLower.FourOfKind] +
-            scoreValues[ScoreTypeLower.FullHouse] + scoreValues[ScoreTypeLower.SmallStraight] +
+            return scoreValues[ScoreTypeLower.ThreeOfKind] + 
+            scoreValues[ScoreTypeLower.FourOfKind] +
+            scoreValues[ScoreTypeLower.FullHouse] + 
+            scoreValues[ScoreTypeLower.SmallStraight] +
             scoreValues[ScoreTypeLower.LargeStraight] +
             scoreValues[ScoreTypeLower.Yathzee] +
             scoreValues[ScoreTypeLower.Chance];
