@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Yathzee
 {
+    /// <summary>
+    /// Gets the proper image for a die value.
+    /// </summary>
     public class DieImage
     {
         private System.Drawing.Image die1 = global::Yathzee.Properties.Resources.die1;

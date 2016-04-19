@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace Yathzee
 {
+    /// <summary>
+    /// Class responsible to hold the data for the lower score section and test the Die values for 
+    /// specific scores.
+    /// </summary>
     public class LowerScoreSection : ScoreSection
     {
-
+        /// <summary>
+        /// Data holder for score values.
+        /// </summary>
         private Dictionary<ScoreTypeLower, int> scoreValues = new Dictionary<ScoreTypeLower, int>();
 
         public LowerScoreSection()
@@ -33,6 +39,12 @@ namespace Yathzee
             return scoreValues;
         }
 
+        /// <summary>
+        /// Main entry point for the class. Checkes what the score is for a
+        /// dice array with a score type, and stores it in the scoreValues Dictonary.
+        /// </summary>
+        /// <param name="dice">The array of Die objects to check</param>
+        /// <param name="scoreType">The score type to check against.</param>
         public void checkScore(Die[] dice, ScoreTypeLower scoreType)
         {
             int[] diceValues = new int[5];
@@ -74,6 +86,11 @@ namespace Yathzee
             scoreValues[ScoreTypeLower.Total] = Total;
         }
 
+        /// <summary>
+        /// Sums up the integer values.
+        /// </summary>
+        /// <param name="values">The integers to be summed.</param>
+        /// <returns>The sum.</returns>
         private int sumValues(int[] values)
         {
             int sum = 0;
@@ -84,6 +101,13 @@ namespace Yathzee
             return sum;
         }
 
+        /// <summary>
+        /// Checks if the array of integers is fit to be counted as Three of Kind.
+        /// A Three of Kind is valid if 3 or more dice have the same value. If they are,
+        /// the score is the sum of the dice values. If not, it is 0.
+        /// </summary>
+        /// <param name="diceValues">The array of dice values</param>
+        /// <returns>The outcome of the test</returns>
         private int checkForThreeOfKind(int[] diceValues)
         {
             if ((diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2]) ||
@@ -98,6 +122,13 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Checks if the array of integers is fit to be counted as Four of Kind.
+        /// A Four of Kind is valid if 4 or more dice have the same value. If they are,
+        /// the score is the sum of the dice values. If not, it is 0.
+        /// </summary>
+        /// <param name="diceValues">The array of dice values</param>
+        /// <returns>The outcome of the test</returns>
         private int checkForFourOfKind(int[] diceValues)
         {
             if ((diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
@@ -113,6 +144,13 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Checks if the array of integers is fit to be counted as Full House.
+        /// A Full House is valid if there are 2 and 3 dice of the same value.
+        /// If they are, the score is 25. If not, it is 0.
+        /// </summary>
+        /// <param name="diceValues">The array of dice values</param>
+        /// <returns>The outcome of the test</returns>
         private int checkForFullHouse(int[] diceValues)
         {
             if ((diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
@@ -128,6 +166,13 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Checks if the array of integers is fit to be counted as Small Straight.
+        /// A Small Straight is valid if there are 4 or more ascending dice values.
+        /// If they are, the score is 30. If not, it is 0.
+        /// </summary>
+        /// <param name="diceValues">The array of dice values</param>
+        /// <returns>The outcome of the test</returns>
         private int checkForSmallStraight(int[] diceValues)
         {
             if ((diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[2] - 1 &&
@@ -149,6 +194,13 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Checks if the array of integers is fit to be counted as Large Straight.
+        /// A Large Straight is valid if there are 5 ascending dice values.
+        /// If they are, the score is 40. If not, it is 0.
+        /// </summary>
+        /// <param name="diceValues">The array of dice values</param>
+        /// <returns>The outcome of the test</returns>
         private int checkForLargeStraight(int[] diceValues)
         {
             if ((diceValues[0] == diceValues[1] - 1 && diceValues[1] == diceValues[2] - 1 &&
@@ -162,6 +214,13 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Checks if the array of integers is fit to be counted as Yathzee.
+        /// A Yathzee is valid if all dice values are the same.
+        /// If they are, the score is 50. If not, it is 0.
+        /// </summary>
+        /// <param name="diceValues">The array of dice values</param>
+        /// <returns>The outcome of the test</returns>
         private int checkForYathzee(int[] diceValues)
         {
             if (diceValues[0] == diceValues[1] && diceValues[0] == diceValues[2] &&
@@ -175,11 +234,22 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Checks if the array of integers if fit to be counted as Chance.
+        /// It will always be fit for Chance.
+        /// The score is the sum of the integer values
+        /// </summary>
+        /// <param name="diceValues">The array of dice values</param>
+        /// <returns>The outcome of the test</returns>
         private int checkForChance(int[] diceValues)
         {
             return sumValues(diceValues);
         }
 
+        /// <summary>
+        /// Sums the total of the lower score section.
+        /// </summary>
+        /// <returns>The sum of the lower score section.</returns>
         private int sumTotal()
         {
             return scoreValues[ScoreTypeLower.ThreeOfKind] + 

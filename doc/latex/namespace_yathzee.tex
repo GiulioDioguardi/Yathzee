@@ -1,0 +1,65 @@
+\hypertarget{namespace_yathzee}{}\section{Yathzee Namespace Reference}
+\label{namespace_yathzee}\index{Yathzee@{Yathzee}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_yathzee_1_1_dice_generator}{Dice\+Generator}
+\begin{DoxyCompactList}\small\item\em Class responsible for creating \hyperlink{class_yathzee_1_1_die}{Die} objects. \end{DoxyCompactList}\item 
+class \hyperlink{class_yathzee_1_1_die}{Die}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_yathzee_1_1_die}{Die} objects are objects that have a die value, and a \hyperlink{class_yathzee_1_1_die_image}{Die\+Image} \end{DoxyCompactList}\item 
+class \hyperlink{class_yathzee_1_1_die_image}{Die\+Image}
+\begin{DoxyCompactList}\small\item\em Gets the proper image for a die value. \end{DoxyCompactList}\item 
+class \hyperlink{class_yathzee_1_1_form1}{Form1}
+\begin{DoxyCompactList}\small\item\em The Graphical User Interface for \hyperlink{namespace_yathzee}{Yathzee}. \end{DoxyCompactList}\item 
+class \hyperlink{class_yathzee_1_1_lower_score_section}{Lower\+Score\+Section}
+\begin{DoxyCompactList}\small\item\em Class responsible to hold the data for the lower score section and test the \hyperlink{class_yathzee_1_1_die}{Die} values for specific scores. \end{DoxyCompactList}\item 
+class {\bfseries Program}
+\item 
+class \hyperlink{class_yathzee_1_1_score_section}{Score\+Section}
+\begin{DoxyCompactList}\small\item\em Abstract class for score section. \end{DoxyCompactList}\item 
+class \hyperlink{class_yathzee_1_1_upper_score_section}{Upper\+Score\+Section}
+\begin{DoxyCompactList}\small\item\em Class responsible to hold the data for the upper score section and test the \hyperlink{class_yathzee_1_1_die}{Die} values for specific scores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespace_yathzee_af9eae2784d7776b80bb77da141a63b7f}{Score\+Type\+Upper} \+: byte \{ \\*
+{\bfseries One}, 
+{\bfseries Two}, 
+{\bfseries Three}, 
+{\bfseries Four}, 
+\\*
+{\bfseries Five}, 
+{\bfseries Six}, 
+{\bfseries Bonus}, 
+{\bfseries Total}
+ \}\begin{DoxyCompactList}\small\item\em Score type for the upper part of the score section. \end{DoxyCompactList}
+\item 
+enum \hyperlink{namespace_yathzee_ae036ce06cdf75e284ea1cd78a457ef70}{Score\+Type\+Lower} \+: byte \{ \\*
+{\bfseries Three\+Of\+Kind}, 
+{\bfseries Four\+Of\+Kind}, 
+{\bfseries Full\+House}, 
+{\bfseries Small\+Straight}, 
+\\*
+{\bfseries Large\+Straight}, 
+{\bfseries Yathzee}, 
+{\bfseries Chance}, 
+{\bfseries Total}
+ \}\begin{DoxyCompactList}\small\item\em Score type for the lower part of the score section. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\index{Yathzee@{Yathzee}!Score\+Type\+Lower@{Score\+Type\+Lower}}
+\index{Score\+Type\+Lower@{Score\+Type\+Lower}!Yathzee@{Yathzee}}
+\subsubsection[{\texorpdfstring{Score\+Type\+Lower}{ScoreTypeLower}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Yathzee.\+Score\+Type\+Lower} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}\hypertarget{namespace_yathzee_ae036ce06cdf75e284ea1cd78a457ef70}{}\label{namespace_yathzee_ae036ce06cdf75e284ea1cd78a457ef70}
+
+
+Score type for the lower part of the score section. 
+
+\index{Yathzee@{Yathzee}!Score\+Type\+Upper@{Score\+Type\+Upper}}
+\index{Score\+Type\+Upper@{Score\+Type\+Upper}!Yathzee@{Yathzee}}
+\subsubsection[{\texorpdfstring{Score\+Type\+Upper}{ScoreTypeUpper}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Yathzee.\+Score\+Type\+Upper} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}\hypertarget{namespace_yathzee_af9eae2784d7776b80bb77da141a63b7f}{}\label{namespace_yathzee_af9eae2784d7776b80bb77da141a63b7f}
+
+
+Score type for the upper part of the score section. 
+
