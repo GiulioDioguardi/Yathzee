@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace Yathzee
 {
+    /// <summary>
+    /// Die objects are objects that have a die value, and a DieImage
+    /// </summary>
     public class Die
     {
+        /// <summary>
+        /// Attribute that holds the DieImage
+        /// </summary>
         System.Drawing.Image dieImage;
+        /// <summary>
+        /// Attribute that holds the die value
+        /// </summary>
         int dieValue;
 
         public int Value { get { return dieValue; } private set { dieValue = value; } }
@@ -19,6 +28,10 @@ namespace Yathzee
             setDie(value);
         }
 
+        /// <summary>
+        /// Initializes the Die object. Sets a DieImage based on parameter value.
+        /// </summary>
+        /// <param name="value">The value of the Die object to be set.</param>
         public void setDie(int value)
         {
             DieImage image = new DieImage();

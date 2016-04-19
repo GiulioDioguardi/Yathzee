@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Yathzee
 {
+    /// <summary>
+    /// Class responsible for creating Die objects.
+    /// </summary>
     public class DiceGenerator
     {
-        /// <summary>
-        /// Class responsible for creating Die objects.
-        /// </summary>
         Random rnd;
         public DiceGenerator()
         {
@@ -20,7 +20,7 @@ namespace Yathzee
         /// <summary>
         /// Creates a Die object using a random number generator.
         /// </summary>
-        /// <returns>A die object.</returns>
+        /// <returns>A Die object.</returns>
         public Die generateDice()
         {    
             int value = rnd.Next(6) + 1;
