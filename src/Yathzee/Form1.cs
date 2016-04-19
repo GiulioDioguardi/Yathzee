@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Yathzee
 {
+    /// <summary>
+    /// Score type for the upper part of the score section.
+    /// </summary>
     public enum ScoreTypeUpper : byte
     {
         One, Two, Three, Four, Five, Six, Bonus, Total
     };
 
+    /// <summary>
+    /// Score type for the lower part of the score section.
+    /// </summary>
     public enum ScoreTypeLower : byte
     {
         ThreeOfKind, FourOfKind, FullHouse, SmallStraight, LargeStraight,
@@ -36,6 +42,9 @@ namespace Yathzee
         CheckBox[] scoreCheckBoxes;
         Label[] scoreLabels;
 
+        /// <summary>
+        /// Sets up the GUI.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -80,6 +89,13 @@ namespace Yathzee
             newRoll();
         }
 
+        /// <summary>
+        /// Handles the click event on button1. During the game, the button will 
+        /// let the dice roll. At the end of the game, the button will act as a
+        /// reset button to start the game over.
+        /// </summary>
+        /// <param name="sender">Button object that has sent the event.</param>
+        /// <param name="e">Varable containing event data.</param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (button1.Text == "Roll dice")
@@ -95,6 +111,14 @@ namespace Yathzee
                 Form1_Load(sender, e);
             }
         }
+
+        /// <summary>
+        /// Generates a set of Die objects every time the timer ticks, except when
+        /// the associating hold check box is checked. Updates the GUI for each 
+        /// tick.
+        /// </summary>
+        /// <param name="sender">Object that has sent the tick.</param>
+        /// <param name="e">Varable containing event data.</param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             PictureBox[] pictureBoxes = new PictureBox[5] { pictureBox1, pictureBox2, pictureBox3,
@@ -112,6 +136,11 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Stops the dice rolling.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer2_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
@@ -119,6 +148,10 @@ namespace Yathzee
             setAllEnabled(true);
         }
 
+        /// <summary>
+        /// Void function that resets the state of the form after a roll.
+        /// Should always be called after a score checkbox has been checked.
+        /// </summary>
         private void newRoll()
         {
             setAllEnabled(false);
@@ -141,6 +174,10 @@ namespace Yathzee
             label34.Text = (upperScores[ScoreTypeUpper.Total] + lowerScores[ScoreTypeLower.Total]).ToString();
         }
 
+        /// <summary>
+        /// Checks whether all score checkboxes have been checked
+        /// </summary>
+        /// <returns>The result of the test</returns>
         private bool areAllCheckBoxesChecked()
         {
             for (int i = 0; i < scoreCheckBoxes.Length; i++)
@@ -153,6 +190,10 @@ namespace Yathzee
             return true;
         }
 
+        /// <summary>
+        /// Set all buttons and hold checkboxes to a enabled or disabled state.
+        /// </summary>
+        /// <param name="isEnabled">The state to be set</param>
         private void setButtonAndHoldsEnabled(bool isEnabled)
         {
             button1.Enabled = isEnabled;
@@ -163,6 +204,10 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Set all inputs of the form to the desired enabled state. If no rolls are left, put the hold checkboxes on disabled state.
+        /// </summary>
+        /// <param name="isEnabled">The state to be set</param>
         private void setAllEnabled(bool isEnabled)
         {
             if (rollRemain == 0)
@@ -187,6 +232,11 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Handles the event when a checkbox has been checked or unchecked in the upper score section.
+        /// </summary>
+        /// <param name="sender">The checkbox that has sent the event.</param>
+        /// <param name="e">Variable that contains the event data.</param>
         private void checkBoxUpperSection_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox currentCheckBox = (CheckBox)sender;
@@ -250,6 +300,11 @@ namespace Yathzee
             }
         }
 
+        /// <summary>
+        /// Handles the event when a checkbox has been checked or unchecked in the lower score section.
+        /// </summary>
+        /// <param name="sender">The checkbox that has sent the event.</param>
+        /// <param name="e">Variable that contains the event data.</param>
         private void checkBoxLowerSection_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox currentCheckBox = (CheckBox)sender;
