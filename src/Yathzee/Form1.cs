@@ -27,6 +27,9 @@ namespace Yathzee
         Yathzee, Chance, Total
     };
 
+    /// <summary>
+    /// The Graphical User Interface for Yathzee.
+    /// </summary>
     public partial class Form1 : Form
     {
         UpperScoreSection upperSection;
