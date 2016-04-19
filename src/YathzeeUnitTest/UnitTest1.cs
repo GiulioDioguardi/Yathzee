@@ -18,21 +18,11 @@ namespace Yathzee
             }
         }
 
-        /*   [TestMethod]
-           public void DieImageTest()
-           {
-               Die die = new Die(0);
-               DieImage image = new DieImage();
-               System.Drawing.Image expected = image.getDieBlank();
-               System.Drawing.Image actual = die.getDieImage();
-               Assert.AreEqual(expected, actual);
-           }*/
-
         [TestMethod]
         public void DiceGeneratorTest()
         {
             DiceGenerator generator = new DiceGenerator();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
             {
                 Die die = generator.generateDice();
                 Assert.IsTrue(die.Value <= 6, "Die shows a value too high.");
