@@ -43,8 +43,8 @@ namespace Yathzee
         /// Main entry point for the class. Checkes what the score is for a
         /// dice array with a score type, and stores it in the scoreValues Dictonary.
         /// </summary>
-        /// <param name="dice"></param>
-        /// <param name="scoreType"></param>
+        /// <param name="dice">The array of Die objects to check</param>
+        /// <param name="scoreType">The score type to check against.</param>
         public void checkScore(Die[] dice, ScoreTypeLower scoreType)
         {
             int[] diceValues = new int[5];

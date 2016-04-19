@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('class_yathzee_1_1_upper_score_section.
 <div class="title">Yathzee.UpperScoreSection Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class responsible to hold the data for the upper score section and test the <a class="el" href="class_yathzee_1_1_die.html" title="Die objects are objects that have a die value, and a DieImage ">Die</a> values for specific scores.  
+ <a href="class_yathzee_1_1_upper_score_section.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Yathzee.UpperScoreSection:</div>
 <div class="dyncontent">
@@ -126,11 +129,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa10b4b6d4c7038e80c9d221bfb482b72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa10b4b6d4c7038e80c9d221bfb482b72"></a>
 Dictionary&lt; <a class="el" href="namespace_yathzee.html#af9eae2784d7776b80bb77da141a63b7f">ScoreTypeUpper</a>, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getScores</b> ()</td></tr>
 <tr class="separator:aa10b4b6d4c7038e80c9d221bfb482b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2db6ea707243900dc1b87cdc4ff9e2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2db6ea707243900dc1b87cdc4ff9e2f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>checkScore</b> (<a class="el" href="class_yathzee_1_1_die.html">Die</a>[] dice, int checkedValue)</td></tr>
+<tr class="memitem:ae2db6ea707243900dc1b87cdc4ff9e2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yathzee_1_1_upper_score_section.html#ae2db6ea707243900dc1b87cdc4ff9e2f">checkScore</a> (<a class="el" href="class_yathzee_1_1_die.html">Die</a>[] dice, int checkedValue)</td></tr>
+<tr class="memdesc:ae2db6ea707243900dc1b87cdc4ff9e2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main entry point for the class. Checkes what the score is for a dice array with a score type, and stores it in the scoreValues Dictonary.  <a href="#ae2db6ea707243900dc1b87cdc4ff9e2f">More...</a><br /></td></tr>
 <tr class="separator:ae2db6ea707243900dc1b87cdc4ff9e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab539f23446aface95d748a3ebc5396d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab539f23446aface95d748a3ebc5396d2"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>areAllSet</b> ()</td></tr>
+<tr class="memitem:ab539f23446aface95d748a3ebc5396d2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_yathzee_1_1_upper_score_section.html#ab539f23446aface95d748a3ebc5396d2">areAllSet</a> ()</td></tr>
+<tr class="memdesc:ab539f23446aface95d748a3ebc5396d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all scores on the upper section are set.  <a href="#ab539f23446aface95d748a3ebc5396d2">More...</a><br /></td></tr>
 <tr class="separator:ab539f23446aface95d748a3ebc5396d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -140,6 +143,62 @@ Additional Inherited Members</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Total</b><code> [get, set]</code></td></tr>
 <tr class="separator:a58581bbdd2cda719e5f1dcd7659c412f inherit properties_class_yathzee_1_1_score_section"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class responsible to hold the data for the upper score section and test the <a class="el" href="class_yathzee_1_1_die.html" title="Die objects are objects that have a die value, and a DieImage ">Die</a> values for specific scores. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ab539f23446aface95d748a3ebc5396d2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Yathzee.UpperScoreSection.areAllSet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if all scores on the upper section are set. </p>
+<dl class="section return"><dt>Returns</dt><dd>The result of the test.</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae2db6ea707243900dc1b87cdc4ff9e2f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Yathzee.UpperScoreSection.checkScore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_yathzee_1_1_die.html">Die</a>[]&#160;</td>
+          <td class="paramname"><em>dice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>checkedValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Main entry point for the class. Checkes what the score is for a dice array with a score type, and stores it in the scoreValues Dictonary. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dice</td><td>The array of <a class="el" href="class_yathzee_1_1_die.html" title="Die objects are objects that have a die value, and a DieImage ">Die</a> objects to check</td></tr>
+    <tr><td class="paramname">scoreType</td><td>The score type to check against.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Yathzee/UpperScoreSection.cs</li>
 </ul>

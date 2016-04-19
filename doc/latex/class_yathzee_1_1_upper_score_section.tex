@@ -1,5 +1,10 @@
 \hypertarget{class_yathzee_1_1_upper_score_section}{}\section{Yathzee.\+Upper\+Score\+Section Class Reference}
 \label{class_yathzee_1_1_upper_score_section}\index{Yathzee.\+Upper\+Score\+Section@{Yathzee.\+Upper\+Score\+Section}}
+
+
+Class responsible to hold the data for the upper score section and test the \hyperlink{class_yathzee_1_1_die}{Die} values for specific scores.  
+
+
 Inheritance diagram for Yathzee.\+Upper\+Score\+Section\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,13 +17,52 @@ Inheritance diagram for Yathzee.\+Upper\+Score\+Section\+:\begin{figure}[H]
 Dictionary$<$ \hyperlink{namespace_yathzee_af9eae2784d7776b80bb77da141a63b7f}{Score\+Type\+Upper}, int $>$ {\bfseries get\+Scores} ()\hypertarget{class_yathzee_1_1_upper_score_section_aa10b4b6d4c7038e80c9d221bfb482b72}{}\label{class_yathzee_1_1_upper_score_section_aa10b4b6d4c7038e80c9d221bfb482b72}
 
 \item 
-void {\bfseries check\+Score} (\hyperlink{class_yathzee_1_1_die}{Die}\mbox{[}$\,$\mbox{]} dice, int checked\+Value)\hypertarget{class_yathzee_1_1_upper_score_section_ae2db6ea707243900dc1b87cdc4ff9e2f}{}\label{class_yathzee_1_1_upper_score_section_ae2db6ea707243900dc1b87cdc4ff9e2f}
-
-\item 
-bool {\bfseries are\+All\+Set} ()\hypertarget{class_yathzee_1_1_upper_score_section_ab539f23446aface95d748a3ebc5396d2}{}\label{class_yathzee_1_1_upper_score_section_ab539f23446aface95d748a3ebc5396d2}
-
-\end{DoxyCompactItemize}
+void \hyperlink{class_yathzee_1_1_upper_score_section_ae2db6ea707243900dc1b87cdc4ff9e2f}{check\+Score} (\hyperlink{class_yathzee_1_1_die}{Die}\mbox{[}$\,$\mbox{]} dice, int checked\+Value)
+\begin{DoxyCompactList}\small\item\em Main entry point for the class. Checkes what the score is for a dice array with a score type, and stores it in the score\+Values Dictonary. \end{DoxyCompactList}\item 
+bool \hyperlink{class_yathzee_1_1_upper_score_section_ab539f23446aface95d748a3ebc5396d2}{are\+All\+Set} ()
+\begin{DoxyCompactList}\small\item\em Checks if all scores on the upper section are set. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class responsible to hold the data for the upper score section and test the \hyperlink{class_yathzee_1_1_die}{Die} values for specific scores. 
+
+
+
+\subsection{Member Function Documentation}
+\index{Yathzee\+::\+Upper\+Score\+Section@{Yathzee\+::\+Upper\+Score\+Section}!are\+All\+Set@{are\+All\+Set}}
+\index{are\+All\+Set@{are\+All\+Set}!Yathzee\+::\+Upper\+Score\+Section@{Yathzee\+::\+Upper\+Score\+Section}}
+\subsubsection[{\texorpdfstring{are\+All\+Set()}{areAllSet()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Yathzee.\+Upper\+Score\+Section.\+are\+All\+Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_yathzee_1_1_upper_score_section_ab539f23446aface95d748a3ebc5396d2}{}\label{class_yathzee_1_1_upper_score_section_ab539f23446aface95d748a3ebc5396d2}
+
+
+Checks if all scores on the upper section are set. 
+
+\begin{DoxyReturn}{Returns}
+The result of the test.
+\end{DoxyReturn}
+\index{Yathzee\+::\+Upper\+Score\+Section@{Yathzee\+::\+Upper\+Score\+Section}!check\+Score@{check\+Score}}
+\index{check\+Score@{check\+Score}!Yathzee\+::\+Upper\+Score\+Section@{Yathzee\+::\+Upper\+Score\+Section}}
+\subsubsection[{\texorpdfstring{check\+Score(\+Die[] dice, int checked\+Value)}{checkScore(Die[] dice, int checkedValue)}}]{\setlength{\rightskip}{0pt plus 5cm}void Yathzee.\+Upper\+Score\+Section.\+check\+Score (
+\begin{DoxyParamCaption}
+\item[{{\bf Die}\mbox{[}$\,$\mbox{]}}]{dice, }
+\item[{int}]{checked\+Value}
+\end{DoxyParamCaption}
+)}\hypertarget{class_yathzee_1_1_upper_score_section_ae2db6ea707243900dc1b87cdc4ff9e2f}{}\label{class_yathzee_1_1_upper_score_section_ae2db6ea707243900dc1b87cdc4ff9e2f}
+
+
+Main entry point for the class. Checkes what the score is for a dice array with a score type, and stores it in the score\+Values Dictonary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dice} & The array of \hyperlink{class_yathzee_1_1_die}{Die} objects to check\\
+\hline
+{\em score\+Type} & The score type to check against.\\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
