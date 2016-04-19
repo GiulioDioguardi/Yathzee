@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yathzee',['Yathzee',['../namespace_yathzee.html',1,'']]]
+  ['upperscoresection',['UpperScoreSection',['../class_yathzee_1_1_upper_score_section.html',1,'Yathzee']]]
 ];

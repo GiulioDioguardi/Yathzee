@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['dicegenerator',['DiceGenerator',['../class_yathzee_1_1_dice_generator.html',1,'Yathzee']]],
-  ['die',['Die',['../class_yathzee_1_1_die.html',1,'Yathzee']]],
-  ['dieimage',['DieImage',['../class_yathzee_1_1_die_image.html',1,'Yathzee']]],
-  ['dispose',['Dispose',['../class_yathzee_1_1_form1.html#a481d2704c1eb9c036cd9389d3dd866cb',1,'Yathzee::Form1']]]
+  ['checkscore',['checkScore',['../class_yathzee_1_1_lower_score_section.html#acd14498c43eb2c788e450269095a9b61',1,'Yathzee::LowerScoreSection']]]
 ];

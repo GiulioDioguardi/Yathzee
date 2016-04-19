@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dispose',['Dispose',['../class_yathzee_1_1_form1.html#a481d2704c1eb9c036cd9389d3dd866cb',1,'Yathzee::Form1']]]
+  ['checkscore',['checkScore',['../class_yathzee_1_1_lower_score_section.html#acd14498c43eb2c788e450269095a9b61',1,'Yathzee::LowerScoreSection']]]
 ];
